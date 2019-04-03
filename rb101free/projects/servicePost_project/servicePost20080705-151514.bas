@@ -1,1 +1,0 @@
-print #request get$("name")print #request get$("phone")

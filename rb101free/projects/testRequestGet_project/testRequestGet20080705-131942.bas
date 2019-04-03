@@ -1,1 +1,0 @@
-html "<textarea name = ""testing""></textarea>"button #ok, "ok", [ok]wait[ok]print "ok"print #request get$("testing")wait

@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>DIM array(size[, size2...])</b></p>
+<p><font face="Courier New" size="2">DIM array(size) </font>
+<font face="Times New Roman">-or-</font><font face="Courier New" size="2"> DIM 
+array(size1, size2) </font><font face="Times New Roman">-or-</font><font face="Courier New" size="2"> 
+DIM array(size1, size2, size3)</font><font face="Times New Roman">, etc...</font></p>
+<p><font face="Courier New" size="2">DIM array1(size1)</font><font face="Times New Roman">,</font><font face="Courier New" size="2"> 
+array2(size2), array3(size3)</font><font face="Times New Roman">, etc.</font></p>
+<p><b>Description:</b></p>
+<p>DIM sets the maximum size of an array. Any array can be dimensioned to have 
+as many elements as memory allows.&nbsp; The DIM statement can be followed by a 
+list of arrays to be dimensioned, separated by commas.</p>
+<p>Note:&nbsp; For compatibility with older BASIC implementations, you can get 
+away with not dimensioning an array, but it will only have a default size of 
+eleven elements from 0 to 10.&nbsp; Best practice is to always use DIM. </p>
+<p><b>Examples:</b></p>
+<p><font face="Courier New" size="2">&nbsp; 'Example 1 - do not use DIM<br>
+&nbsp; print &quot;Please enter 10 names.&quot;<br>
+&nbsp; for index = 0 to 10<br>
+&nbsp;&nbsp;&nbsp; input names$<br>
+&nbsp;&nbsp;&nbsp; name$(index) = name$<br>
+&nbsp; next index</font></p>
+<p>Second example:</p>
+<p><font face="Courier New" size="2">&nbsp; 'Dimension three arrays at once<br>
+&nbsp; dim arrayOne(100), arrayTwo$(100, 5), arrayThree(100, 100)</font></p>
+<p>The FOR . . . NEXT loop in the example above is limited to a maximum value of 
+10 because the array names$( ) is not dimensioned, and therefore is limited to 
+11 elements, numbered 0 - 10. To remedy this problem, add a DIM statement, as in 
+the example below. Notice that it is not necessary to use all available index 
+numbers. In the example the array is filled beginning at index 1, ignoring index 
+0.</p>
+<p><font face="Courier New" size="2">&nbsp; dim names$(20)<br>
+&nbsp; print &quot;Please enter 20 names.&quot;<br>
+&nbsp; for index = 1 to 20<br>
+&nbsp;&nbsp;&nbsp; input names$<br>
+&nbsp;&nbsp;&nbsp; names$(index) = name$<br>
+&nbsp; next index</font></p>
+<p>Double subscripted arrays can store information more flexibly:</p>
+<p><font face="Courier New" size="2">&nbsp; dim customerInfo$(10, 5)<br>
+&nbsp; print &quot;Please enter information for 10 customers.&quot;<br>
+&nbsp; for index = 0 to 9<br>
+&nbsp;&nbsp;&nbsp; input &quot;Customer name &gt;&quot;; info$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerInfo$(index, 0) = info$<br>
+&nbsp;&nbsp;&nbsp; input &quot;Address &gt;&quot;; info$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerInfo$(index, 1) = info$<br>
+&nbsp;&nbsp;&nbsp; input &quot;City &gt;&quot;; info$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerInfo$(index, 2) = info$<br>
+&nbsp;&nbsp;&nbsp; input &quot;State &gt;&quot;; info$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerInfo$(index, 3) = info$<br>
+&nbsp;&nbsp;&nbsp; input &quot;Zip &gt;&quot;; info$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerInfo$(index, 4) = info$<br>
+&nbsp; next index</font></p>
+<p><font face="Times New Roman">Note: You are not restricted to 2 dimensions.&nbsp; 
+Keep in mind that each dimension that you add multiplies memory consumption 
+exponentially.&nbsp; You can run out of memory very easily if you decide you 
+need 3 or more dimensions in an array.</font></p>
+
+
+</html>

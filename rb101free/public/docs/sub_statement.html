@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>SUB subName [ zero or more comma delimited variable names ]</b></p>
+<p>See also: <a href="call_statement.html">CALL</a>,
+<a href="function_statement.html">FUNCTION</a></p>
+<p><font face="Courier New" size="2">sub subName <i>zero or more comma separated 
+parameter variable names<br>
+&nbsp; </i>'code for the sub goes in here<br>
+end sub</font></p>
+<p><b>Description:</b></p>
+<p>This statement defines a subroutine. Zero or more parameters may be passed 
+into the subroutine. A subroutine cannot contain another subroutine definition, 
+nor a function definition.</p>
+<p>The CALL statement is used to access the SUBROUTINE and to pass values into 
+it. The values must be the same type as the SUB statement defines them to be. So 
+the following example:</p>
+<p><font face="Courier New" size="2">sub mySubName string$, number, otherString$</font></p>
+<p>is called like this:</p>
+<p><font face="Courier New" size="2">call mySubName &quot;string value&quot;, 123, str$(&quot;321&quot;)</font></p>
+<p>Subroutines can also be used as event handlers for widgets like buttons, 
+links, etc.&nbsp; See <a href="button_statement.html">BUTTON</a>,
+<a href="link_statement.html">LINK</a></p>
+<p><b>Local Variables</b></p>
+<p>The variable names inside a subroutine are scoped locally, meaning that the 
+value of any variable inside a subroutine is different from the value of a 
+variable of the same name outside the subroutine. </p>
+<p><b>Global Variables and Devices</b></p>
+<p>String, numeric and object variables declared with the
+<a href="global_statement.html">GLOBAL</a> statement are available in the main program and in subroutines and 
+functions.</p>
+<p>Arrays are global to a Run BASIC program, and visible inside a subroutine 
+without needing to be passed in. </p>
+<p>Special global status is given to certain default variables used for sizing, 
+positioning, and coloring windows and controls. These include variables 
+DefaultDir$, Platform$, UserInfo$, UrlKeys$, UserAddress$, ProjectsRoot$, 
+ResourcesRoot$, Err$, Err, EventKey$, RowIndex.&nbsp; The value of these 
+variables can be seen and modified in any subroutine/function.</p>
+<p><b>Branch Labels</b></p>
+<p>Branch labels are locally scoped. Code inside a subroutine cannot see branch 
+labels outside the subroutine, and code outside a subroutine cannot see branch 
+labels inside any subroutine.</p>
+<p><b>Ending a Subroutine:</b></p>
+<p>The sub definition must end with the expression: end sub</p>
+
+
+</html>

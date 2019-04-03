@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>DIV name</b></p>
+<p>See also: <a href="cssid_statement.html">CSSID</a></p>
+<p><font face="Courier New" size="2">div name<i><br>
+&nbsp; </i>'code for the sub goes in here<br>
+end div</font></p>
+<p><b>Description:</b></p>
+<p>DIV and END DIV define &lt;DIV&gt; and &lt;/DIV&gt; tags on the web page.&nbsp; These are 
+used with CSS rules to organize and apply visual styles to different parts of a 
+web page.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">&nbsp; cssid #links, &quot;{ background: 
+#E8FFE8; padding: 4px; width: 792px }&quot;<br>
+&nbsp; cssid #entries, &quot;{ font-size: 16pt; background: #CFC; width: 768px; 
+padding: 16px }&quot;<br>
+&nbsp; cssid #entry, &quot;{ font-size: 14pt; width: 700px; background: #FFF; 
+border-bottom: 1px solid #CDC; }&quot;<br>
+&nbsp; div links<br>
+&nbsp;&nbsp;&nbsp; link #menuA, &quot;Menu A&quot;, [goA]<br>
+&nbsp;&nbsp;&nbsp; print &quot; &quot;;<br>
+&nbsp;&nbsp;&nbsp; link #menuB, &quot;Menu B&quot;, [goB]<br>
+&nbsp;&nbsp;&nbsp; print &quot; &quot;;<br>
+&nbsp;&nbsp;&nbsp; link #menuC, &quot;Menu C&quot;, [goC]<br>
+&nbsp; end div<br>
+&nbsp; div entries<br>
+&nbsp;&nbsp;&nbsp; print &quot;Entries&quot;<br>
+&nbsp;&nbsp;&nbsp; print<br>
+&nbsp;&nbsp;&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; div entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;Entry &quot;; x<br>
+&nbsp;&nbsp;&nbsp; end div<br>
+&nbsp;&nbsp;&nbsp; next x<br>
+&nbsp; end div<br>
+&nbsp; wait<br>
+&nbsp;</font></p>
+
+
+
+</html>

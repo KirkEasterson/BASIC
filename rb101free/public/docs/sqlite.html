@@ -1,0 +1,259 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<style>
+<!--
+.bordercolor  { background-color: #000000; }
+td            { font-family: Verdana,Arial; color: #000000; font-size:11px; }
+.windowbg     { background-color: #EFEFEF; font-size: 11px; color: #000000; }
+.code         { font-size: 10px; font-family: Courier New; color: #000000; background-color: #F6F6F6; }
+-->
+</style>
+</head>
+
+<body>
+
+<p dir="ltr"><b><font size="5">The SQLite Database</font></b></p>
+
+<p dir="ltr" align="right"><a href="rbhelp.html">Jump to Run BASIC Help File</a></p>
+<p dir="ltr"><a href="#createDatabase">Creating a database inside of Run BASIC</a><br>
+<a href="#executing">Executing queries</a><br>
+<a href="#retrieving">Retrieving information using SELECT</a><br>
+<a href="#displayResults">Displaying results using RENDER</a><br>
+<a href="#decorating">Decorating the rendered output</a><br>
+<a href="#practices">Important practices</a><br>
+<a href="#sqliteMethods">SQLITE methods</a><br>
+<a href="#queryResultRow">QueryResultRow object</a><br>
+<a href="#specialVariables">Special Variables</a><br>
+<a href="#xmlStructure">XML Structure of Rendered SQL Results</a></p>
+<p dir="ltr">This is not an SQL tutorial but it is intended to explain how 
+to use the features of SQLite with Run BASIC.&nbsp; If you are already familiar 
+with SQL this section will get you up to speed.</p>
+<p dir="ltr">SQLite is a very popular database system used in many commercial 
+and open source projects.&nbsp; It is small, fast and implements most of the 
+SQL-92 standard.&nbsp; We have included a copy of SQLite v3.4.0 with Run BASIC ready to 
+use.</p>
+<p dir="ltr">You can visit the <a href="http://www.sqlite.org">SQLite 
+website</a> for lots more information than we will present here.</p>
+<p dir="ltr"><b><a name="createDatabase"></a>Creating a database inside of Run BASIC</b></p>
+<p dir="ltr">SQLite databases are kept in simple flat files.&nbsp; If your 
+database name is Customers, then the file is Customers.db.&nbsp; To create a new 
+database named Records with a single table named Payables, the code looks like 
+this:</p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+&nbsp; query$ = &quot;create table Payables (company char(50), invoice char(12), due integer, 
+amt char(10))&quot;<br>
+&nbsp;
+#records execute(query$)<br>
+&nbsp;
+#records disconnect()</font></p>
+
+<p dir="ltr">The SQLITECONNECT statement creates a new database or opens an 
+existing database.&nbsp; It returns a database accessor object and assigns it to 
+the variable #records.&nbsp; The simple act of connecting to a database that doesn't exist 
+causes it to be created.</p>
+
+<p dir="ltr">If you need to test if a database exists you can 
+use the FILES statement like so:</p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; files #accessor, 
+&quot;Records.db&quot;<br>
+&nbsp; exists = #accessor hasAnswer()<br>
+&nbsp; if exists then print &quot;the database file exists&quot;</font></p>
+<p dir="ltr"><b><a name="executing"></a>Executing queries</b></p>
+<p dir="ltr">Run BASIC provides an EXECUTE method for executing queries to 
+SQLite.&nbsp; This is the method we used to create the table in the example 
+above.</p>
+<p dir="ltr">Here is an example that adds a row of data using the EXECUTE method 
+to submit an INSERT query:</p>
+<p><font face="Courier New" size="2">&nbsp; sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+&nbsp; query$ = &quot;insert into Payables (company, invoice, due, amt) values 
+(&quot;&quot;IBM&quot;&quot;, &quot;&quot;1029A&quot;&quot;, 38945, &quot;&quot;19.95&quot;&quot;)&quot;<br>
+&nbsp; #records execute(query$)<br>
+&nbsp;
+#records disconnect()</font></p>
+
+<p>SQLite does not have a Date type, so instead we give it a number.&nbsp; You 
+can use Run BASIC's date$() function to convert date information from string to 
+numeric values.&nbsp; For example:</p>
+
+<p><font face="Courier New" size="2">&nbsp; d$ = date$(38945)<br>
+&nbsp; print d$<br>
+&nbsp; d = date$(d$)<br>
+&nbsp; print d</font></p>
+
+<p>Notice also the doubling up of quotation marks in the query string.&nbsp; Run 
+BASIC allows you to embed quotation marks into a string in this way.&nbsp; For 
+example:</p>
+
+<p><font face="Courier New" size="2">&nbsp; print &quot;She said I was &quot;&quot;funny&quot;&quot; 
+looking. :-(&quot;</font></p>
+
+<p dir="ltr"><b><a name="retrieving"></a>Retrieving information using SELECT</b></p>
+
+<p dir="ltr">Use the SELECT statement to get information out of a database.</p>
+
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+&nbsp; query$ = &quot;select * from Payables&quot;<br>
+&nbsp; #records execute(query$)<br>
+&nbsp; if #records hasanswer() then<br>
+&nbsp;&nbsp;&nbsp; for x = 1 to #records rowcount()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print #records nextrow$(&quot;,&quot;)<br>
+&nbsp;&nbsp;&nbsp; next x<br>
+&nbsp; end if<br>
+&nbsp; #records disconnect()</font></p>
+
+<p dir="ltr">After we execute the SELECT statement, we use the HASANSWER method 
+to check for returned rows of data.&nbsp; Then we use the ROWCOUNT method in a 
+FOR/NEXT loop to get each row with the NEXTROW$ method.&nbsp; The result looks 
+something like this:</p>
+
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; IBM,1029A,38945,19.95<br>
+&nbsp; Brooks Brothers,029528,38915,199.95<br>
+&nbsp; Joe's Garage,330Z,38995,48.99<br>
+&nbsp; Toyota,834-18,38999,129.95</font></p>
+
+<p dir="ltr"><font face="Times New Roman">Note that once you disconnect from the 
+database the #records object is nulled out so you need to get your information 
+out before you disconnect.</font></p>
+<p dir="ltr"><b><font face="Times New Roman"><a name="displayResults"></a>Displaying results using RENDER</font></b></p>
+<p dir="ltr"><font face="Times New Roman">You can also display results using the 
+RENDER statement.&nbsp; This creates a formatted result from your SQL query.&nbsp; 
+Look at this example.&nbsp; If you only need to display the results of your 
+query, this can be a very convenient way to do this:</font></p>
+<p dir="ltr"><font face="Times New Roman">&nbsp;sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+query$ = &quot;select * from Payables&quot;<br>
+#records execute(query$)<br>
+render #records<br>
+#records disconnect()</font></p>
+<p dir="ltr"><font face="Times New Roman">Here's what the resulting output looks 
+like:</font></p>
+<blockquote>
+  <p dir="ltr"><img border="0" src="sqlrender.PNG" width="288" height="104"></p>
+</blockquote>
+<p dir="ltr">The output is generated by wrapping the database results in HTML 
+tags for displaying a table.</p>
+<p dir="ltr"><b><font face="Times New Roman"><a name="decorating"></a>Decorating the rendered output</font></b></p>
+<p dir="ltr"><font face="Times New Roman">The database accessor object has a 
+bunch of method for adjusting its visual appearance when it is rendered.&nbsp; 
+Here is a quick example:</font></p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+&nbsp; query$ = &quot;select * from Payables&quot;<br>
+&nbsp; #records execute(query$)<br>
+&nbsp; cssclass &quot;table&quot;, &quot;{ width: 600px; border: 8px ridge #CCF ; 
+border-spacing: 3px }&quot;<br>
+&nbsp; cssclass &quot;tr&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp; render #records<br>
+&nbsp; #records disconnect()</font></p>
+<p dir="ltr"><font face="Times New Roman">Here's what the output looks:</font></p>
+<blockquote>
+  <p dir="ltr"><img border="0" src="sqltable2.PNG" width="606" height="128"></p>
+</blockquote>
+<p dir="ltr">The two CSSCLASS statements provide CSS rules attached to the 
+&lt;table&gt; and &lt;tr&gt; tags.</p>
+<p dir="ltr"><b><a name="practices"></a>Important practices</b></p>
+<p dir="ltr"><b>Opening and closing database connections</b> - In web programming it is important not to leave things like 
+databases open because if the user closes the browser the server cannot know 
+that this has happened.&nbsp; So, when programming using SQLite always open the 
+database, do your work and close the database right away.</p>
+<p dir="ltr"><b>Guarding against SQL Injection</b> - If you decide to publish 
+your web applications to the Internet you need to be aware of a technique used 
+by hackers call SQL Injection.&nbsp; How this can affect the security of your 
+site is important.&nbsp; If you are hosting your Run BASIC web application on a 
+private network and have trusted users you may not need to be concerned about 
+your site being hacked.</p>
+<p dir="ltr">&nbsp; Here is a helpful overview of SQL Injection as published on 
+Wikipedia:&nbsp; <a href="http://en.wikipedia.org/wiki/Sql_injection">
+http://en.wikipedia.org/wiki/Sql_injection</a>&nbsp; </p>
+<p><b><a name="sqliteMethods"></a>SQLITE methods</b></p>
+<p>Here is a complete list of the methods that the SQLite database accessor 
+provides:</p>
+<p>#handle EXECUTE(expr$) - Execute the SQL query in expr$<br>
+#handle DISCONNECT() - Disconnect from the database<br>
+#handle HASANSWER() - Return true (nonzero) if there are result rows to read 
+from the last query<br>
+#handle NEXTROW$(delimiter$) - Return the next row as a string using delimiter$ 
+to separate each item<br>
+#handle ROWCOUNT() - Return the number of unread result rows from the last query<br>
+#handle COLUMNNAMES$() - Return a string containing the comma delimited column 
+names from the last query<br>
+#handle DEBUG$() - Return a string containing &quot;&quot;<br>
+#handle ISNULL() - Return zero (false) because the database accessor is not 
+null.<br>
+#handle #NEXTROW() - Return a QueryResultRow object which will let you refer to 
+specific column values by name.<br>
+<br>
+<i>The following methods are for rendering the result of a query to a web page 
+as a TABLE</i><br>
+#handle COLUMNNAMES(expr$) - Set the column names using a comma delimited string 
+expression<br>
+#handle CAPTION(expr$) - Set the caption using expr$<br>
+#handle CSSCLASS(expr$) - Set the CSS class tag to expr$<br>
+#handle TRCLASS(expr$) - Set the CSS class tag for table rows to expr$<br>
+#handle TDCLASS(expr$) - Set the CSS class tag for data items to expr$<br>
+#handle THCLASS(expr$) - Set the CSS class tag for header row items to expr$<br>
+#handle CAPTIONCLASS(expr$) - Set the CSS class tag for the caption to expr$<br>
+#handle ALLCLASS(expr$) - Set the CSS class tag for all of the properties to 
+expr$<br>
+#handle LINK(columnNameExpr$, &quot;handler&quot;) - Make the items in a column into links 
+using handler (either a sub or a branch label) when the user clicks</p>
+
+<p><b><a name="queryResultRow"></a>QueryResultRow object</b></p>
+
+<p>Using the #NEXTROW() method you can get an object which is good for getting 
+individually named column values from a result row.&nbsp; For example:</p>
+
+<p><font face="Courier New" size="2">&nbsp; #myDb execute(&quot;select * from myTable&quot;)<br>
+&nbsp; #row = #myDb #nextrow()<br>
+&nbsp; print #row name$()<br>
+&nbsp; print #row age()</font></p>
+
+<p><b><a name="specialVariables"></a>Special Variables</b></p>
+
+<p>When using a QueryResultRow object Run BASIC will translate NULL values into 
+0 when asked for a numeric value, and into an empty string when asked for a 
+string.&nbsp; You can change the default values to something else if you like by 
+changing the contents of the NullColumn$ and NullColumn variables, which are 
+globally visible.</p>
+
+<p><b><a name="xmlStructure"></a>XML Structure of Rendered SQL Results</b></p>
+<p>Here is an example of XML generated for render SQL results.&nbsp; Note that 
+this is essentially the same as XML generated for <a href="tables.html">table</a> 
+objects.&nbsp; Some values have been simplified and link related javascript is 
+removed for clarity.&nbsp; This information is useful for CSS work, and also for 
+XML parsing purposes.</p>
+<p><font face="Courier New" size="2">&lt;table&gt;<br>
+&nbsp; &lt;caption &gt;Coffee menu&lt;/caption&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;th&gt;Drink type&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;span class=&quot;row-odd&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval1_k=kval2&quot;&gt;Regular&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;Classic drip&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;/span&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval3_k=kval4&quot;&gt;Latte&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Coffee and frothy milk&lt;/td&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;span class=&quot;row-odd&quot;&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval5_k=kval6&quot;&gt;Espresso&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Concentrated coffee goodness&lt;/td&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;/span&gt;<br>
+&lt;/table&gt;</font></p>
+
+</body>
+
+</html>

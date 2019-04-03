@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p>SUB subName <i>zero or more comma separated parameter variable names</i><br>
+&nbsp; 'code for the sub goes in here<br>
+END SUB</p>
+<p><b>Description:</b></p>
+<p>This statement defines a subroutine. Zero or more parameters may be passed 
+into the subroutine. A subroutine cannot contain another subroutine definition, 
+nor a function definition.<br>
+<br>
+The CALL statement is used to access the SUBROUTINE and to pass values into it. 
+The values must be the same type as the SUB statement defines them to be. So the 
+following example:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; sub mySubName string$, number, #handle<br>
+</font><br>
+is called like this:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; call mySubName &quot;string value&quot;, 123, #myObject</font><br>
+<br>
+<b>Local Variables</b></p>
+<p>The variable names inside a subroutine are scoped locally, meaning that the 
+value of any variable inside a subroutine is different from the value of a 
+variable of the same name outside the subroutine. <br>
+<br>
+<b>Global Variables</b></p>
+<p>Variables declared with the GLOBAL statement are available in the main 
+program and in subroutines and functions.<br>
+<br>
+Arrays are global to a Run BASIC program, and visible inside a subroutine 
+without needing to be passed in. <br>
+<br>
+Special global status is given to certain default variables used for sizing, 
+positioning, and coloring windows and controls. These include variables DefaultDir$, Platform$, UserInfo$, UrlKeys$, UserAddress$, ProjectsRoot$, 
+ResourcesRoot$, Err$, Err, EventKey$, RowIndex. The value of these variables can 
+be seen and modified in any subroutine/function.<br>
+<br>
+<b>Branch Labels</b></p>
+<p>Branch labels are locally scoped. Code inside a subroutine cannot see branch 
+labels outside the subroutine, and code outside a subroutine cannot see branch 
+labels inside any subroutine.<br>
+<br>
+<b>Ending a Subroutine:</b></p>
+<p>The sub definition must end with the expression: end sub<br>
+<br>
+<b>Exit a Subroutine:</b></p>
+<p>The sub can be exited before the end with an &quot;exit sub&quot; statement.<br>
+<br>
+<b>Executing Subroutines</b></p>
+<p>Be sure that a program doesn't accidentally flow into a subroutine. A 
+subroutine should only execute when it is called by command in the program.<br>
+<br>
+wrong:<br>
+for i = 1 to 10<br>
+'do some stuff<br>
+next i<br>
+<br>
+Sub MySub param1, param2<br>
+'do some stuff<br>
+End Sub<br>
+<br>
+correct:<br>
+for i = 1 to 10<br>
+'do some stuff<br>
+next i<br>
+<br>
+WAIT <br>
+<br>
+Sub MySub param1, param2<br>
+'do some stuff<br>
+End Sub<br>
+<br>
+<br>
+Example:<br>
+Usage:<br>
+<br>
+'copy two files into one<br>
+fileOne$ = &quot;first.txt&quot;<br>
+fileTwo$ = &quot;second.txt&quot;<br>
+combined$ = &quot;together.txt&quot;<br>
+call mergeFiles fileOne$, fileTwo$, combined$<br>
+<br>
+end<br>
+<br>
+sub mergeFiles firstFile$, secondFile$, merged$<br>
+open merged$ for output as #merged<br>
+open firstFile$ for input as #first<br>
+print #merged, input$(#first, lof(#first));<br>
+close #first<br>
+open secondFile$ for input as #second<br>
+print #merged, input$(#second, lof(#second));<br>
+close #second<br>
+close #merged<br>
+end sub<br>
+<br>
+<br>
+See also: FUNCTION, Recursion, Functions and Subroutines</p>
+
+
+
+</html>

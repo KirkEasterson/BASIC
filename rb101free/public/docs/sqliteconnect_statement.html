@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>SQLITECONNECT #handle, databaseName$</b></p>
+<p><b>Description:</b></p>
+<p>The SQLITECONNECT statement creates a new database or opens an 
+existing database.&nbsp; It returns a database accessor object and assigns it to 
+the variable #records.&nbsp; The simple act of connecting to a database that doesn't exist 
+causes it to be created.<br>
+<br>
+<b>Example:</b></p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; sqliteconnect #records, 
+&quot;Records.db&quot;<br>
+&nbsp; query$ = &quot;create table Payables (company char(50), invoice char(12), due integer, 
+amt char(10))&quot;<br>
+&nbsp;
+#records execute(query$)<br>
+&nbsp;
+#records disconnect()</font></p>
+
+<p dir="ltr">If you need to test if a database exists you can 
+use the FILES statement like so:</p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; files #accessor, 
+&quot;Records.db&quot;<br>
+&nbsp; exists = #accessor hasAnswer()<br>
+&nbsp; if exists then print &quot;the database file exists&quot;</font></p>
+
+
+
+<p dir="ltr"><font face="Times New Roman">See also: <a href="sqlite.html">SQLite</a> 
+for more details</font></p>
+
+
+
+
+</html>

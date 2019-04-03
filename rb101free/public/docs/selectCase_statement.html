@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>SELECT CASE expr</b></p>
+<p>The SELECT CASE statement makes it easy to execute different code paths 
+depending on provided or computed values.&nbsp; This is a cleaner shorthand for 
+nested IF THEN/ELSE/END IF statements.</p>
+<p><b>Example:</b></p>
+<p>The SELECT CASE statement is supported in the following form.</p>
+<p><font face="Courier New" size="2">for x = 1 to 10<br>
+&nbsp; select case int(rnd(1)*4)<br>
+&nbsp;&nbsp;&nbsp; case 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;red&quot;<br>
+&nbsp;&nbsp;&nbsp; case 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;green&quot;<br>
+&nbsp;&nbsp;&nbsp; case 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;blue&quot;<br>
+&nbsp;&nbsp;&nbsp; case else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;other&quot;<br>
+&nbsp; end select<br>
+next x</font></p>
+<p>The expression doesn't need to be numeric.&nbsp; For example:</p>
+<p><font face="Courier New" size="2">input &quot;Type red, green or blue&quot;; colorName$<br>
+select case colorName$<br>
+&nbsp; case &quot;red&quot;<br>
+&nbsp;&nbsp;&nbsp; print &quot;The color is red&quot;<br>
+&nbsp; case &quot;green&quot;<br>
+&nbsp;&nbsp;&nbsp; print &quot;The color is green&quot;<br>
+&nbsp; case &quot;blue&quot;<br>
+&nbsp;&nbsp;&nbsp; print &quot;The color is blue&quot;<br>
+&nbsp; case else<br>
+&nbsp;&nbsp;&nbsp; print &quot;Invalid entry&quot;<br>
+end select</font></p>
+
+
+</html>

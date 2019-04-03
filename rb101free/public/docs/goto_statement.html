@@ -1,0 +1,64 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>GOTO label</b></p>
+<p>Description:</p>
+<p>GOTO causes Liberty BASIC to proceed to the program code following the label, 
+using the form 'GOTO label'. The label can be either a traditional line number 
+or a branch label in the format [branchLabel] where the branch label name can be 
+any upper/lowercase letter combination. Spaces and digits are not allowed.</p>
+<p>Here are some valid branch labels: [mainMenu] [enterLimits] [repeatHere]</p>
+<p>Here are some invalid branch labels: [enter limits] mainMenu [1moreTime]</p>
+<p>Usage:</p>
+<p><font face="Courier New" size="2">.<br>
+.<br>
+<br>
+[repeat]<br>
+<br>
+.<br>
+.<br>
+<br>
+[askAgain]<br>
+&nbsp; print &quot;Make your selection (m, r, x).&quot;<br>
+&nbsp; input selection$<br>
+&nbsp; if selection$ = &quot;M&quot; then goto [menu]<br>
+&nbsp; if selection$ = &quot;R&quot; then goto [repeat]<br>
+&nbsp; if selection$ = &quot;X&quot; then goto [exit]<br>
+&nbsp; goto [askAgain]<br>
+<br>
+.<br>
+.<br>
+<br>
+[menu]<br>
+&nbsp; print &quot;Here is the main menu.&quot;<br>
+<br>
+.<br>
+.<br>
+<br>
+[exit]<br>
+&nbsp; print &quot;Okay, bye.&quot;<br>
+&nbsp; end</font></p>
+<p>Notes:</p>
+<p>In the lines containing IF . . . THEN GOTO, the GOTO is optional.&nbsp; For 
+example the following is valid (and even preferred):</p>
+<p><font face="Courier New" size="2">&nbsp; if selection$ = &quot;M&quot; then [menu]</font></p>
+<p>But in the line <font face="Courier New" size="2">GOTO [askAgain]</font>, the 
+GOTO is required.</p>
+<p>See also <a href="gosub_statement.html">GOSUB</a></p>
+
+
+</html>

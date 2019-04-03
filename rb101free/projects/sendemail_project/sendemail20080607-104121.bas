@@ -1,0 +1,1 @@
+smtpsender #aSender, "mail.libertybasic.com"#aSender password("halo123")fromAddr$ = "liberty@libertybasic.com"toAddr$ = "libbasic@gmail.com"#aSender send(fromAddr$, toAddr$, _    "Do you want some Pi?", _    "Apple please, with vanilla ice cream!")

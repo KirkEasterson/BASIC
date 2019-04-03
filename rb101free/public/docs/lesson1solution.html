@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lesson One Solution</title>
+</head>
+
+<body>
+
+<p><font face="Times New Roman" size="5"><b>Lesson One Homework Solution</b></font><br>
+Copyright 2007 Shoptalk Systems<br>
+All Rights Reserved</p>
+
+<p align="right"><a href="learnrunbasic.html">Return to Table of Contents</a></p>
+<p>
+<font face="Courier New" size="2">[start]<br>
+<br>
+&nbsp; 'Ask for a dollar and cent amount<br>
+&nbsp; print &quot;Type a dollar and cent amount.&quot;<br>
+&nbsp; input &quot;(Press 'Enter' alone for help) ?&quot;; amount<br>
+<br>
+&nbsp; 'Display help if user pressed [Enter]<br>
+&nbsp; if amount = 0 then [help]<br>
+<br>
+&nbsp; 'Calculate tax for the nearest 20 cent multiple<br>
+&nbsp; dollars = int(amount)<br>
+<br>
+&nbsp; dollarsTax = dollars * 0.05<br>
+&nbsp; cents = amount - dollars<br>
+&nbsp; adjustment = 0.10<br>
+&nbsp; centsAdjusted = cents + adjustment<br>
+&nbsp; centsRounded = int(centsAdjusted / 0.20) * 0.20<br>
+&nbsp; centsTax = (centsRounded / 0.20) / 100<br>
+&nbsp; tax = dollarsTax + centsTax<br>
+<br>
+&nbsp; 'Display the amount, tax, and total<br>
+&nbsp; print &quot;Product Price $&quot;; using(&quot;#####.##&quot;, amount)<br>
+&nbsp; print &quot;Sales Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;; using(&quot;#####.##&quot;, tax)<br>
+<br>
+&nbsp; print &quot;------------------------&quot;<br>
+&nbsp; print &quot;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;; 
+using(&quot;#####.##&quot;, tax + amount)<br>
+&nbsp; print<br>
+&nbsp; goto [start]<br>
+<br>
+[help]<br>
+&nbsp; cls<br>
+&nbsp; print &quot;SALESTAX.BAS Help&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;This tax program determines how much tax is&quot;<br>
+&nbsp; print &quot;due on an amount entered and also computes&quot;<br>
+&nbsp; print &quot;the total amount. The tax rate is 5%.&quot;<br>
+&nbsp; print<br>
+&nbsp; input &quot;Press [Enter] to continue.&quot;; dummyVariable<br>
+&nbsp; cls<br>
+&nbsp; goto [start]</font></p>
+
+</body>
+
+</html>

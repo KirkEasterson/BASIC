@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>RUN programName$[, #handle]</b><br>
+<br>
+<b>Description:</b></p>
+<p>Run the program or project specified by programName$.&nbsp; The calling 
+program will block until the program that is run has reached a WAIT, INPUT, or 
+UPLOAD statement, or until it terminates.</p>
+<p>An optional #handle will allow the program to be treated as an object.&nbsp; 
+Functions that are defined in the program can be called as object methods.&nbsp; 
+The RENDER statement can also be used to embed the object in the page.</p>
+<p>If the programName$ variable contains a string of the form of &quot;projectName&quot; 
+then Run BASIC will look for the project with that name in the projects folder.&nbsp; 
+If the programName$ variable contains a string of the form &quot;programName.bas&quot; or 
+&quot;path\programName.bas&quot; then Run BASIC will look for a .BAS file in the specified 
+location.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">[masterPage]<br>
+&nbsp; cls<br>
+&nbsp; html &quot;&lt;h2&gt;Program manager&lt;/h2&gt;&quot;<br>
+&nbsp; link #wiki, &quot;Wiki&quot;, [runTheWiki]<br>
+&nbsp; print &quot; &quot;;<br>
+&nbsp; link #multi, &quot;Multicounter&quot;, [runTheMulticounter]<br>
+&nbsp; print<br>
+&nbsp; if launchFlag then render #subProg<br>
+&nbsp; wait<br>
+<br>
+[runTheWiki]<br>
+&nbsp; run &quot;runWiki&quot;, #subProg<br>
+&nbsp; launchFlag = 1<br>
+&nbsp; goto [masterPage]<br>
+<br>
+[runTheMulticounter]<br>
+&nbsp; run &quot;multicounter&quot;, #subProg<br>
+&nbsp; launchFlag = 1<br>
+&nbsp; goto [masterPage] </font><br>
+&nbsp;</p>
+
+
+
+</html>

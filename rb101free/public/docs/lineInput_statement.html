@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>LINE INPUT [[#handle,]|[prompt$;] var [, var2...]</b></p>
+<p><b>Description:</b></p>
+<p>This gets the next data line from the user or from a file and assigns the 
+value to var.&nbsp; The LINE INPUT statement reads from the file, ignoring 
+commas in the input stream and completing the data item only at the next 
+carriage return or at the end of file. This is useful for reading text with 
+embedded commas.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">&nbsp; 'Display each line of a text file<br>
+&nbsp; input &quot;Please type a filename&quot;; filename$<br>
+&nbsp; open filename$ for input as #text<br>
+[loop]<br>
+&nbsp; if eof(#text) &lt;&gt; 0 then [quit]<br>
+&nbsp; line input #text, item$<br>
+&nbsp; print item$<br>
+&nbsp; goto [loop]<br>
+[quit]<br>
+&nbsp; close #text<br>
+&nbsp; print &quot;Done.&quot;</font></p>
+<p><b>Arrays:</b></p>
+<p>Line Input allows input directly multiple variables and arrays.</p>
+<p><font face="Courier New" size="2">&nbsp; file$ = &quot;readme.txt&quot;<br>
+&nbsp; dim a$(3000)<br>
+&nbsp; open file$ for input as #f<br>
+&nbsp;&nbsp;&nbsp; while not(eof(#f))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; line input #f, a$(i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i=i+1<br>
+&nbsp;&nbsp;&nbsp; wend<br>
+&nbsp; close #f<br>
+&nbsp; for j=0 to i<br>
+&nbsp;&nbsp;&nbsp; print a$(j)<br>
+&nbsp; next j<br>
+&nbsp; end</font></p>
+<p>See also: <a href="input_statement.html">INPUT</a>,
+<a href="../../../Program%20Files/Liberty%20BASIC%20v4.04%20beta%203/lb4help/LibertyBASIC_4_web/html/libe7wvn.htm">
+Input (#h, n)</a>,
+<a href="../../../Program%20Files/Liberty%20BASIC%20v4.04%20beta%203/lb4help/LibertyBASIC_4_web/html/libe5xwv.htm">
+INPUTTO$(#h, c$)</a></p>
+
+
+</html>

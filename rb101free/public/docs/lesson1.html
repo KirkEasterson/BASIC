@@ -1,0 +1,895 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lesson One</title>
+</head>
+
+<body>
+
+<p><b><font size="5">Lesson One - An Introduction to Run BASIC<br>
+</font></b>Copyright 2007 Shoptalk Systems<br>
+All Rights Reserved</p>
+
+<p align="right"><a href="learnrunbasic.html">Return to Table of Contents</a></p>
+
+<p><a href="#whatIsRunBasic">What is Run BASIC?</a><br>
+<a href="#programmingWhatIsIt">Programming: What is it?</a><br>
+<a href="#anIntroductionToBasic">An Introduction to BASIC</a><br>
+<a href="#goto">GOTO - Doing something more than once</a><br>
+<a href="#ifThen">IF...THEN - Adding smarts to our programs</a><br>
+<a href="#stringVariables">String variables</a><br>
+<a href="#thingsWithStrings">Some things to do with strings</a><br>
+<a href="#functions">Functions</a><br>
+<a href="#documentingBasicCode">Documenting BASIC code</a><br>
+<a href="#letsWriteAProgram">Let's write a program - HILO.BAS</a><br>
+<a href="#completeListing">Complete listing for HILO.BAS</a></p>
+<p><b><font size="4"><a name="whatIsRunBasic"></a>What is Run BASIC?</font></b></p>
+<p>Run BASIC is a special version of the BASIC programming language.&nbsp; It 
+has many of the qualities that made BASIC popular and successful as the first 
+widely used language for computers:</p>
+<ul>
+  <li>Designed for beginners</li>
+  <li>Simple English like commands</li>
+  <li>High level features allow a lot to be done with just a little code</li>
+  <li>Does not require an understanding of computer hardware</li>
+  <li>Hides the complexity of the computer's operating system</li>
+</ul>
+<p>In addition Run BASIC is specially designed to be a version of BASIC for the 
+web.&nbsp; Your programs can run in a web browser without your writing any 
+special web code at all.&nbsp; If you want to use some web features you can add 
+those optionally.</p>
+<p><b><font size="4"><a name="programmingWhatIsIt"></a>Programming: What is it?</font></b></p>
+<p>There's nothing mystical about programming computers. Although the newest 
+software on the market today begins to look like magic, all software is built 
+from the ground up out of combinations of the simplest software parts. Once you 
+learn what these software parts are and how they're used, hard work and 
+imagination can take you almost anywhere.<br>
+<br>
+Programming is (simply put) the laying out of simple steps to solve a problem, 
+and in a way that a computer can understand. This is a little bit like teaching 
+a person. These steps must be arranged in the correct order.<br>
+<br>
+For example:<br>
+<br>
+How to drive a car with automatic transmission:<br>
+<br>
+Get into drivers seat ;<br>
+Fasten safety belt ;<br>
+Insert ignition key and turn it to start engine ;<br>
+Press brake with foot ;<br>
+Move transmission selection to D ;<br>
+Look around to see if you're safe ;<br>
+Remove foot from brake ;<br>
+Press accelerator pedal with foot ;<br>
+Manuever into traffic ;<br>
+Don't crash<br>
+<br>
+Obviously if the above steps are scrambled up (and maybe even if they aren't) 
+you're in for a pretty big insurance claim. Not only that, but if the 
+instructions are given to someone who speaks only, say, Chinese, we will have a 
+similarly spectacular crash! In the same way, computers are particular about 
+both the order and content of the instructions we give them.<br>
+<br>
+A program in its simplest form usually contains three kinds of activity:<br>
+<br>
+INPUT The program asks the user for some kind of information ;<br>
+CALCULATION The program transforms or manipulates the information ;<br>
+OUTPUT The program displays the final result of CALCULATION<br>
+<br>
+It is the programmer's job to determine exactly how to accomplish these steps.</p>
+<p><b><font size="4"><a name="anIntroductionToBasic"></a>An Introduction to 
+BASIC</font></b></p>
+<p>BASIC (Beginners All purpose Symbolic Instruction Code) was created in the 
+1960's as an easy to learn programming language for computers. Because of 
+BASIC's simple form and because it was an interpreted language and gave the 
+programmer instant feedback, it became the most popular programming language 
+when microcomputers made their debut, and it has a large following even today.<br>
+<br>
+This tutorial introduces the first principles of Run BASIC, but doesn't provide 
+a thorough description of all language features. For more on the full language 
+and command set, refer to the documentation included with your copy of Run 
+BASIC.<br>
+<br>
+<b>Salestax.bas, a simple BASIC program.</b><br>
+<br>
+Now let's create a very simple program to introduce you to the simplest of 
+BASIC's features. We want a BASIC program that:<br>
+<br>
+1 - Asks for a dollar and cent amount for goods ;<br>
+2 - Calculates a 5% sales tax amount for the dollar and cent figure ;<br>
+3 - Displays the tax amount the total amount<br>
+<br>
+INPUT - First we need an instruction for the computer that gets information from 
+the user. In BASIC there are several ways to do this but we will choose the 
+input command for our program. In this case input would be used like so:<br>
+<br>
+<font face="Courier New" size="2">input &quot;Type a dollar and cent amount ?&quot;; 
+amount<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+^------this is a variable</font><br>
+<br>
+This line of BASIC code will display the words, &quot;Type a dollar and cent amount 
+?&quot;, and the computer will stop and wait for the user to type something in. When 
+the [Enter] key is pressed, the typed information will then be stored in the 
+variable* amount.<br>
+<br>
+*variable - In programming, you must assign each bit of data (or information) a 
+unique name. This combination of a name and its data is called a variable 
+because the data part can vary each time the program is used. When you edit a 
+program, you choose a name for each variable. You pick the name for each 
+variable to best fit the kind of data it represents. BASIC doesn't care what 
+names you assign to your variables, except you can't use the names of BASIC 
+commands or functions (called reserved words). Choose names that make it easy 
+for anyone to understand what the BASIC program code means and does. When 
+running a program, BASIC uses the data part of the variable in its calculations. 
+BASIC uses the name of the variable to fetch its data part or to store new data 
+in that variable. Variable data can change many times during the execution of a 
+BASIC program.<br>
+<br>
+CALCULATION - Now we need to calculate the tax for the data in our amount 
+variable:<br>
+<br>
+<font face="Courier New" size="2">let tax = amount * 0.05</font><br>
+<br>
+This line of code creates a new variable called &quot;tax&quot; to hold our computed tax 
+data. The BASIC command, &quot;let&quot;, tells BASIC to calculate the arithmetic on the 
+right side of the = and set the data of the variable &quot;tax&quot; equal the results of 
+the equation. The &quot;let&quot; word is optional (and most programmers leave it out) but 
+I use it here as an example of BASIC syntax. It could have been coded as 
+follows:<br>
+<br>
+<font face="Courier New" size="2">tax = amount * 0.05</font><br>
+<br>
+Now you may be wondering what is that funny little '*' (called asterisk). Since 
+there are no formal arithmatic symbols on a typewriter keyboard, most 
+programming languages use * to denote multiplication, / for division, and the 
+addition and subtraction symbols get lucky and are + and - (what else?).<br>
+<br>
+OUTPUT - Now that we have calculated our tax amount, we will display it with:<br>
+<br>
+<font face="Courier New" size="2">print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax + 
+amount</font><br>
+<br>
+The print command displays the information to the screen. The line of code above 
+shows how print is used to display several items of data, each separated by a 
+';' (semicolon).<br>
+<br>
+The items are:</p>
+<table border="1" cellspacing="1" width="65%" bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td width="24%"><font face="Courier New" size="2">&quot;Tax is: &quot;</font></td>
+    <td width="76%">This displays on screen as is, but without the quotation 
+    marks</td>
+  </tr>
+  <tr>
+    <td width="24%"><font face="Courier New" size="2">tax </font></td>
+    <td width="76%">This displays the value of the variable tax</td>
+  </tr>
+  <tr>
+    <td width="24%"><font face="Courier New" size="2">&quot;. Total is: &quot;</font></td>
+    <td width="76%">This also displays on screen as is, but without quotation 
+    marks</td>
+  </tr>
+  <tr>
+    <td width="24%"><font face="Courier New" size="2">tax + amount</font></td>
+    <td width="76%">This displays the sum of the two variables, tax and amount</td>
+  </tr>
+</table>
+<p dir="ltr">These will all be displayed on the same line. The semicolons are 
+not displayed. Each print command is followed by a carriage return. The result 
+might look like this:<br>
+<br>
+<font size="2" face="Courier New">Tax is: 0.05. Total is: 1.05</font><br>
+<br>
+Now let's run the program. Type or cut/paste the following program into the Run 
+BASIC editor so that it looks as shown.<br>
+<br>
+<font face="Courier New" size="2">&nbsp; input &quot;Type a dollar and cent amount?&quot;; 
+amount<br>
+&nbsp; let tax = amount * 0.05<br>
+&nbsp; print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax+amount</font><br>
+<br>
+Now run the program by clicking on the Run button.&nbsp; Here is a sample run:<br>
+<br>
+<font face="Courier New" size="2">Type a dollar and cent amount??1.20<br>
+Tax is: 0.06. Total is: 1.26</font><br>
+<br>
+Now let's save our program. Click on the Save Project button. Now type the name 
+salestax and click on Save.</p>
+<p><b><font size="4"><a name="goto"></a>GOTO - Doing something more than once</font></b></p>
+<p>Assuming that our tax program does what we want (see previous section), it 
+still only does it once. Each time you want to use this handy little program you 
+have to run it again. This can get to be tedious and even error prone (say 
+rubber baby buggy bumpers ten times fast). What we need is a way for our program 
+to go to the beginning and do it over. In BASIC (and in some other languages) 
+the command for doing this is called GOTO (surprise!).<br>
+<br>
+Knowing that we have to goto some place is not enough. We also need to know 
+where to go. When you hop into your car in a foreign country looking for a food 
+market, you at least know what you are looking for. Run BASIC can't ask for 
+directions, so you need to be very precise.<br>
+<br>
+The mechanism that Run BASIC uses to mark places that we can goto is called a 
+branch label. This is a lot like a mailing address. When you send a letter or 
+package, you mark it with a known mailing address (hopefully). There is a house 
+or building somewhere marked with that address, and that is where your parcel 
+goes to. So in the same way, you mark the place in your BASIC program where you 
+want it to continue running with a branch label (a mailing address of sorts).<br>
+<br>
+There are two ways to define a branch label in Run BASIC. You can use any valid 
+integer number as a branch label, or you can use an easier to remember type 
+which uses letters.<br>
+<br>
+Examples of integer branch labels:<br>
+<br>
+10 150 75 900 5400 etc...<br>
+<br>
+Examples of alphanumeric (using letters and numbers) branch labels:<br>
+<br>
+[start] [loopBack] [getResponse] [point1] etc...<br>
+<br>
+Examples of unacceptable branch labels:<br>
+<br>
+[loop back] no spaces allowed<br>
+start must use brackets<br>
+<br>
+(point1) only use square brackets<br>
+<br>
+Since no spaces are allowed in the alphanumeric branch labels, it works well to 
+capitalize the first letter in each word when multiple words are used in a 
+branch label. For example [gettimedresponse] is valid, but [getTimedResponse] is 
+much more readable.<br>
+<br>
+So let's pick a branch label for our salestax.bas program. Since we are going to 
+do it over again from the start, we could pick from several reasonable branch 
+label names like perhaps [start], [begin], or [go]. We will use [start] for our 
+program.<br>
+<br>
+Let's add the branch label as shown:<br>
+<br>
+<font face="Courier New" size="2">[start]<br>
+&nbsp; input &quot;Type a dollar and cent amount &quot;; amount<br>
+&nbsp; let tax = amount * 0.05<br>
+&nbsp; print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax + amount</font><br>
+<br>
+Now we need our goto line. Now that we have our branch label, the correct format 
+for goto is goto [start]. And here's what our program looks like when both a 
+branch label and a goto:<br>
+<br>
+<font face="Courier New" size="2">[start]<br>
+&nbsp; input &quot;Type a dollar and cent amount &quot;; amount<br>
+&nbsp; let tax = amount * 0.05<br>
+&nbsp; print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax + amount<br>
+&nbsp; goto [start]</font><br>
+<br>
+Now let's try running this program. It runs over and over and over, right? This 
+programming format is called an unconditional loop because it always loops back 
+to repeat the same code no matter what.</p>
+<p><b><font size="4"><a name="ifThen"></a>IF...THEN - Adding smarts to our 
+programs</font></b></p>
+<p>The program we designed above will only do one thing for us, no frills. Let's 
+learn how to add some smarts to our program. One way that this can be done is 
+with the if . . . then statement.<br>
+<br>
+The if . . . then statement is a direct descendant of those do-it-yourself style 
+instruction manual texts. For example:<br>
+<br>
+Problem: Your car's engine won't turn over<br>
+<br>
+1) Check your battery for correct voltage.<br>
+2) If voltage is less then 11 volts then goto to step 13<br>
+3) Clean and tighten ground connection.<br>
+4) If this doesn't solve the trouble, continue to step 5.<br>
+5) Remove the starter.<br>
+6) Connect starter directly to battery<br>
+7) If starter does not spin then goto step 18<br>
+8) Check starter relay.<br>
+. . .<br>
+13) Charge battery<br>
+. . .<br>
+18) See chapter 4 on rebuilding the starter unit<br>
+<br>
+Notice how in the above example how you are led smartly through the 
+troubleshooting procedure. The steps containing the words if and then make it 
+possible to intelligently work through a complex procedure. In the same way, the 
+if . . . then statement in BASIC makes it possible to add a kind of intelligence 
+to your programs.<br>
+<br>
+Let's see how we can apply this. Suppose we want the computer to give us the 
+option to display instructions about how to use our tax program. An easy way to 
+add this ability would be to display instructions whenever a zero value is 
+entered as our dollar amount.<br>
+<br>
+Now, whenever input is used to get a number from the user, if the user doesn't 
+type a number but only presses the [Enter] key, then Run BASIC uses the value of 
+the amount variable (initially zero). We can exploit this feature in our sales 
+tax program. By checking to see if the variable equals zero after the input 
+statement, we can decide whether or not to display instructions.<br>
+<br>
+Here's what our new program looks like:<br>
+<br>
+<font face="Courier New" size="2">[start]<br>
+&nbsp; print &quot;Type a dollar and cent amount.&quot;<br>
+&nbsp; input &quot;(Press 'Enter' alone for help) ?&quot;; amount<br>
+&nbsp; if amount = 0 then goto [help]<br>
+&nbsp; let tax = amount * 0.05<br>
+&nbsp; print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax + amount<br>
+&nbsp; goto [start]<br>
+<br>
+[help]<br>
+&nbsp; print<br>
+&nbsp; print &quot;This tax program determines how much tax is&quot;<br>
+&nbsp; print &quot;due on an amount entered and also computes&quot;<br>
+&nbsp; print &quot;the total amount. The tax rate is 5%&quot;<br>
+&nbsp; goto [start]</font><br>
+<br>
+Notice the line &quot;if amount = 0 then goto [help]&quot; in the program above. When Run 
+BASIC execute this line, it checks to see if the variable is equal to 0. If the 
+variable equals zero, then the goto[help] statement in the line is executed. 
+Just BASIC then begins executing the instructions after the [help] branch label. 
+The if...then statement reads exactly like it executes.<br>
+<br>
+Actually, the goto part of the if . . . then statement is optional. Either of 
+these two forms is acceptable:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; if amount = 0 then goto [help]</font></p>
+<p>- or -</p>
+<p><font face="Courier New" size="2">&nbsp; if amount = 0 then [help]</font><br>
+<br>
+Comparing numbers - The = (equality) operator is only one of several that can be 
+used to make decisions in an if . . . then statement. We can use the if . . . 
+then statement and the ( =, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;= ) operators to determine whether:</p>
+<table border="1" cellspacing="1" width="49%" bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td width="19%" align="center">a = b</td>
+    <td width="81%">a is equal to b</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a &lt;&gt; b</td>
+    <td width="81%">a is unequal to b</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a &lt; b</td>
+    <td width="81%">a is less than b</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a &gt; b</td>
+    <td width="81%">a is greater than b</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a &lt;= b</td>
+    <td width="81%">a is less than or equal to b</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a &gt;= b</td>
+    <td width="81%">a is greater than or equal to b</td>
+  </tr>
+</table>
+<p>For example, instead of checking to see if amount was equal to 0 in the above 
+program, we could have checked to see whether it was less than 0.01 (or one 
+cent). For example:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; if amount &lt; 0.01 then goto [help]</font><br>
+<br>
+When you run the program above you will probably notice that the things 
+displayed sort of run together. There are things that we can do to neaten up the 
+appearance of a BASIC program. We can add extra blank lines between our printed 
+output to break things up. This is done by using an empty print statement, one 
+for each blank line. We can also clear the window at an appropriate time with 
+the cls statement. Both of these techniques are applied to our tax program in 
+the listing below:<br>
+<br>
+<font face="Courier New" size="2">[start]<br>
+&nbsp; print &quot;Type a dollar and cent amount.&quot;<br>
+&nbsp; input &quot;(Press 'Enter' alone for help) ?&quot;; amount<br>
+&nbsp; if amount = 0 then [help]<br>
+&nbsp; let tax = amount * 0.05<br>
+&nbsp; print &quot;Tax is: &quot;; tax; &quot;. Total is: &quot;; tax + amount<br>
+&nbsp; goto [start]<br>
+<br>
+[help]<br>
+&nbsp; cls<br>
+&nbsp; print &quot;SALESTAX.BAS Help&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;This tax program determines how much tax is&quot;<br>
+&nbsp; print &quot;due on an amount entered and also computes&quot;<br>
+&nbsp; print &quot;the total amount. The tax rate is 5%.&quot;<br>
+&nbsp; print<br>
+&nbsp; input &quot;Press [Enter] to continue.&quot;; dummyVariable<br>
+&nbsp; print<br>
+&nbsp; goto [start]</font><br>
+<br>
+Notice the line 'input &quot;Press [Enter] to continue.&quot;; dummyVariable' in the 
+listing. In this example, we are using an input statement to halt the program, 
+so the instructions can be read. When [Enter] is pressed as instructed, 
+dummyVariable receives the value of what is entered. In this case, only [Enter] 
+is pressed, so dummyVariable gets a value of zero for its data. It really 
+doesn't matter what dummyVariable's data is since we don't use the variable in 
+any calculations elsewhere (hence the name dummyVariable).</p>
+<p><b><font size="4"><a name="stringVariables"></a>String variables</font></b></p>
+<p>So far, the only kind of variables we have used are for holding number 
+values. There are special variables for holding words and other non-numeric 
+character combinations. These variables are called string variables (they hold 
+strings of characters*).<br>
+<br>
+*Characters are:<br>
+&nbsp; Letters of the alphabet ;<br>
+&nbsp; Digits 0123456789 ;<br>
+&nbsp; Any other special symbols like: , . &lt; &gt; / ? ; : ' &quot; [ ] { } ` ~ ! @ # $ % 
+^ &amp; * ( ) + - \ | etc . . .<br>
+<br>
+Let's look at a very simple program using strings:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; input &quot;Please type your name ?&quot;; name$<br>
+&nbsp; print &quot;It's nice to meet you, &quot;; name$</font><br>
+<br>
+This two-line program asks you for your name. Once you've typed it and pressed 
+[Enter], it responds with:<br>
+<br>
+<font face="Courier New" size="2">It's nice to meet you, your-name-here</font><br>
+<br>
+Notice one special thing about our string variable name. It ends with a $ 
+(dollar sign). In BASIC, when you want to store characters in a variable, you 
+end the variable name with a $. This makes it a string variable. As you can see 
+from our program example, you can both input and print with string variables, as 
+we did earlier with our non-string or numeric variables.<br>
+<br>
+We've actually been using strings all along, even before this section about 
+string variables. Whenever you saw a BASIC program line with words in quotes 
+(for example: print &quot;It's nice to meet you, &quot;) you were looking at what is 
+called a string literal. This is a way to directly express a string in a BASIC 
+program, exactly the way we type numbers directly in, only with characters 
+instead. A string literal always starts with a quotation mark and always ends 
+with a quotation mark. No quotation marks are allowed in between the starting 
+and ending quotation marks (point: string literals cannot contain quotation 
+marks).<br>
+<br>
+NOTE - A string can have zero characters. Such a string is often called an empty 
+string. In BASIC, an empty string can be expressed in a string literal as two 
+quotation marks without any characters between them. For example 
+(noCharactersHere$ is the name of our string variable):<br>
+<br>
+<font face="Courier New" size="2">&nbsp; let noCharactersHere$ = &quot;&quot;</font></p>
+<p><b><font size="4"><a name="thingsWithStrings"></a>Some things to do with 
+strings</font></b></p>
+<p>Just as you can manipulate numbers in a computer programming language by 
+adding, subtracting, multiplying, and dividing, (and more!), we can also 
+manipulate strings<br>
+<br>
+Adding strings - We can add (or concatenate) two or more strings together in 
+BASIC like so:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; input &quot;What is your first name ?&quot;; 
+firstName$<br>
+&nbsp; input &quot;What is your last name ?&quot;; lastName$<br>
+&nbsp; let fullName$ = firstName$ + &quot; &quot; + lastName$<br>
+&nbsp; print &quot;Your full name is: &quot;; fullName$</font><br>
+<br>
+In this short program, we input two strings, your first and last name. Then we 
+concatenate the string in firstName$ with the string literal &quot; &quot; (a single space 
+between two quotes) and with lastName$. The result is made the data for the 
+string variable fullName$, which we then print out.<br>
+<br>
+Comparing strings - We can compare strings with each other just as we can 
+compare numbers. This means that we can use the if . . . then statement and the 
+( =, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;= ) operators to determine whether:</p>
+<table border="1" cellspacing="1" width="49%" bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td width="19%" align="center">a$ = b$</td>
+    <td width="81%">a$ is equal to b$</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a$ &lt;&gt; b$</td>
+    <td width="81%">a$ is unequal to b$</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a$ &lt; b$</td>
+    <td width="81%">a$ is less than b$</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a$ &gt; b$</td>
+    <td width="81%">a$ is greater than b$</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a$ &lt;= b$</td>
+    <td width="81%">a$ is less than or equal to b$</td>
+  </tr>
+  <tr>
+    <td width="19%" align="center">a$ &gt;= b$</td>
+    <td width="81%">a$ is greater than or equal to b$</td>
+  </tr>
+</table>
+<p>When comparing strings, a string is considered to be equal to another string 
+when all the characters in one string are exactly the same in both strings. This 
+means that even if they both print the same onto the screen, they can still be 
+unequal if one has an invisible space on the end, and the other doesn't. For 
+example:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; a$ = &quot;Hello&quot;<br>
+&nbsp; b$ = &quot;Hello &quot;<br>
+&nbsp; print &quot;a$ is &quot;; a$<br>
+&nbsp; print &quot;b$ is &quot;; b$<br>
+&nbsp; if a$ = b$ then goto [areTheSame]<br>
+&nbsp; print &quot;a$ and b$ are not the same&quot;<br>
+&nbsp; goto [end]<br>
+[areTheSame]<br>
+&nbsp; print &quot;a$ and b$ are the same&quot;<br>
+[end]</font><br>
+<br>
+When the line if a$ = b$ then goto [same] is performed, the result is not to 
+goto [same], because even though if a$ and b$ were printed they would look the 
+same, they are not actually the same.</p>
+<p><b><font size="4"><a name="functions"></a>Functions</font></b></p>
+<p>Now that we've covered bringing data into your programs with input, 
+displaying data with print, keeping data in string and numeric variables, and 
+controlling program flow with if . . . then, we will bring one more way to light 
+to flesh out your programs. Functions provide a means for manipulating program 
+data in meaningful ways.<br>
+<br>
+Look this short program:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; input &quot;Please type your name ?&quot;; name$<br>
+&nbsp; print &quot;Your name is &quot;; len(name$); &quot; characters long.&quot;</font><br>
+<br>
+The second line demonstrates the use of the len( ) function. The len( ) function 
+returns the number of characters in a string. The expression inside of the 
+parenthesis must either be a string literal, a string variable, or an expression 
+that evaluates to be a string. This identifies len( ) as a string function. 
+There are other string functions (for example: val( ), trim$( ) ). The result 
+returns is a number and can be used in any mathematical expression.<br>
+<br>
+There are numeric functions as well. For example:<br>
+<br>
+<font face="Courier New" size="2">[start]<br>
+&nbsp; let count = count + 1<br>
+&nbsp; print &quot;The sine of &quot;; count; &quot; is &quot;; sin(count)<br>
+&nbsp; if count &lt; 45 then goto [start]</font><br>
+<br>
+This simple program lists the sines for the values from 1 to 45. The sin( ) 
+function takes the value of count enclosed in parenthesis and returns the sine 
+(a function in trigonometry, a branch of mathematics) for that value. Just like 
+the len( ) function above, cos( ) and other numeric functions can be used as 
+parts of bigger expressions. We will see how this works just a little further 
+along.<br>
+<br>
+Notice also the way the program counts from 1 to 45. On the first pass, count is 
+equal to zero until it gets to the line let count = count + 1 which makes sets 
+the data for variable count to be one more than its value at that point. Then 
+the program prints the sine of count (the sine of one, in other words). After 
+this, the line if count &lt; 45 goto [start] checks to see if the data for count is 
+less than 45. If it is, then BASIC goes back to the branch label [start] to do 
+it again. This happens over and over until count reaches a value of 45, and then 
+it doesn't go back to [start] again, but instead having no more lines of code to 
+run, the program stops.<br>
+<br>
+Going back to execute code over again is called looping. We saw this earlier 
+when we first used the goto statement. In our first use of goto, the program 
+always looped back. In this newest example program we see going back to execute 
+code over again, but based on a condition (in this case whether count is less 
+than 45). This is called conditional looping (you guessed it, the looping that 
+always happens is called unconditional looping, or infinite looping).</p>
+<p><b><font size="4"><a name="documentingBasicCode"></a>Documenting BASIC code</font></b></p>
+<p>When writing very short and simple BASIC programs, it isn't usually difficult 
+to grasp how they work when reading them days or even weeks later. When a 
+program starts to get large then it can be much harder. There are things that 
+the programmer (yes, you) can do to make BASIC programs more understandable.<br>
+<br>
+VARIABLES - Run BASIC makes it easy to give your variables very meaningful 
+names. Since a variable name can be as long as you like and because Run BASIC 
+lets you use upper and lower case letters, variable names can be very 
+meaningful.<br>
+<br>
+For example:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; let c = (a^2 + b^2) ^ 0.5</font><br>
+<br>
+could better be expressed:<br>
+<br>
+<font face="Courier New" size="2">&nbsp; let lengthOfCable = (distanceFromPole ^ 
+2 + heightOfPole ^ 2) ^ 0.5</font><br>
+<br>
+Both are valid Run BASIC code, but the second is easier to read and maintain.<br>
+<br>
+BRANCH LABELS - Make sure that when you use goto that your branch labels 
+describe the kind of activity your BASIC program performs after the label. For 
+example if you are branching to a routine that displays help then use [help] as 
+your branch label. Or if you are branching to the end of your program you might 
+use [endProgram] or [quit] as branch labels.<br>
+<br>
+COMMENTING CODE - BASIC also has a built in documentation feature that lets you 
+add as much commentary as you like in the language of your choice. The rem 
+(short for remark) statement lets you type whatever you like after it (you can 
+even misspell or type gobbledy-gook, it doesn't care!). For example:<br>
+<br>
+<font face="Courier New" size="2">[askForName]<br>
+<br>
+&nbsp; rem Ask for the user's name<br>
+&nbsp; input &quot;What is your name ?&quot; ; yourName$<br>
+<br>
+&nbsp; rem If the user didn't type anything, then ask again<br>
+&nbsp; if yourName$ = &quot;&quot; then goto [askForName]</font><br>
+<br>
+Notice how a rem statement was added before the input statement and before the 
+if . . . then statement to describe what they should do. Run BASIC just skips 
+over these lines, but a human reader finds this kind of documentation very 
+helpful.<br>
+<br>
+Also see the way that blank lines were added between the different parts of the 
+program? These help to group things together, making the program easier to read.<br>
+<br>
+A more elegant form of the rem statement uses the ' (apostrophe, the key just to 
+the left of the Enter key). Instead of typing rem, substitute the ' like so:<br>
+<br>
+<font face="Courier New" size="2">[askForName]<br>
+<br>
+&nbsp; 'Ask for the user's name<br>
+&nbsp; input &quot;What is your name ?&quot; ; yourName$<br>
+<br>
+&nbsp; 'If the user didn't type anything, then ask again<br>
+&nbsp; if yourName$ = &quot;&quot; then goto [askForName]</font><br>
+<br>
+Most people consider this to be more readable than using rem, and it works the 
+same. One extra thing that you can do only with the apostrophe version of rem is 
+to hang it off the end of whatever line you are commenting. For example:<br>
+<br>
+<font face="Courier New" size="2">[askForName]<br>
+&nbsp; input &quot;What is your name ?&quot; ; yourName$ ' Ask for the user's name<br>
+&nbsp; if yourName$ = &quot;&quot; then goto [askForName] ' The user didn't type anything. 
+Ask again</font><br>
+<br>
+This optional, but it saves screen space and many prefer it.<br>
+<br>
+Learning to document the programs you write takes practice. Try to develop a 
+consistent style. Everyone does it differently and there isn't a right or wrong 
+way to do it. Very small programs may not need any documentation at all. 
+Programs that you intend to share with others should probably be thoroughly 
+documented.</p>
+<p><b><font size="4"><a name="letsWriteAProgram"></a>Let's write a program - HILO.BAS</font></b></p>
+<p>Now we will write a simple game using all of the concepts described in this 
+tutorial. These include:<br>
+<br>
+&nbsp; input statement<br>
+&nbsp; print statement<br>
+&nbsp; let statement<br>
+&nbsp; variables<br>
+&nbsp; goto statement<br>
+&nbsp; conditional branching with if . . . then<br>
+&nbsp; functions<br>
+&nbsp; documenting<br>
+<br>
+<b><font size="4">THE GAME - HILO.BAS</font></b><br>
+<br>
+Hi-Lo is a simple guessing game. The computer will pick a number between 1 and 
+100. Our job is to guess the number in as few guesses as we can. When we guess, 
+the computer will tell us to guess higher or to guess lower depending on whether 
+we guessed too high or too low. When we finally get it, the computer will tell 
+us how many guesses it took.<br>
+<br>
+Let's outline how our program will work before we begin to write code:<br>
+<br>
+&nbsp; (1) Pick a number between 1 and 100<br>
+&nbsp; (2) Print program title and give some instructions<br>
+&nbsp; (3) Ask for the user to guess number<br>
+&nbsp; (4) Tally the guess<br>
+&nbsp; (5) If the guess is right go to step (9)<br>
+&nbsp; (6) If the guess is too low tell the user to guess higher<br>
+&nbsp; (7) If the guess is too high tell the user to guess lower<br>
+&nbsp; (8) Go back to step (3)<br>
+&nbsp; (9) Beep and tell the user how many guess it took to win<br>
+&nbsp; (10) Ask the user whether to play again<br>
+&nbsp; (11) If the user answers yes then clear the guess tally and goto step (1)<br>
+&nbsp; (12) Give the user instructions on how to close the game window<br>
+&nbsp; (13) End the program<br>
+<br>
+When we write an outline for a computer program like we did here, the resulting 
+outline is often called pseudocode, which is a fancy name for false code. This 
+can be a useful tool for planning out software before it is written, and it can 
+be very helpful in developing ideas before code is actually written.<br>
+<br>
+Now we are going to take each of the steps above and write BASIC code for each 
+step. We will document the code to explain its purpose:<br>
+<br>
+(1) Pick a number between 1 and 100<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'Here is an interactive HI-LO<br>
+&nbsp; 'Program<br>
+<br>
+[start]<br>
+&nbsp; guessMe = int(rnd(1)*100) + 1</font><br>
+<br>
+The first couple of lines are just ' remark statements to give a brief 
+desciption for the program. The [start] branch label is equivalent to calling 
+this part of the program step <br>
+<br>
+Now we have the code that picks the number. We use two functions here to 
+accomplish this task:<br>
+<br>
+The rnd( ) function is the key to this line of code. It picks a random (or 
+nearly random) number greater than 0 and less than 1 (for example 0.3256). Then 
+we multiply this by 100 with the * operator to get a number between greater than 
+0 but less then 100 (0.3256 times 100 would be 32.56) ;<br>
+<br>
+The int( ) function removes the fractional part to leave only the integer part 
+of the number (the 0.56 part of 32.56 would be removed to leave only 32).<br>
+<br>
+Then we add 1 to this. This is necessary because we want to pick a number as 
+small as 1 and as large as 100. The rnd( ) function only gives us a number as 
+large as 0.9999999 and not as large as 1. If you multiply 0.9999999 by 100, the 
+biggest number you can get is 99.99999, and this is not big enough so we add 
+one.<br>
+<br>
+When we have picked the number, we assign its value to the variable guessMe.<br>
+<br>
+2) Print program title and give some instructions<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'Clear the screen and print the title 
+and instructions<br>
+&nbsp; cls<br>
+&nbsp; print &quot;HI-LO&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;I have decided on a number between one&quot;<br>
+&nbsp; print &quot;and a hundred, and I want you to guess&quot;<br>
+&nbsp; print &quot;what it is. I will tell you to guess&quot;<br>
+&nbsp; print &quot;higher or lower, and we'll count up&quot;<br>
+&nbsp; print &quot;the number of guesses you use.&quot;<br>
+&nbsp; print</font><br>
+<br>
+This very simple part of the program wipes the window clean and prints the title 
+HI-LO and some instructions. Notice the use of blank print statements to add 
+space between the title and the instructions and after the instructions also.<br>
+<br>
+3) Ask for the user to guess number<br>
+<br>
+<font face="Courier New" size="2">[ask]<br>
+&nbsp; 'Ask the user to guess the number and tally the guess<br>
+&nbsp; input &quot;OK. What is your guess&quot;; guess</font><br>
+<br>
+Here the branch label [ask] will let us go back here later if the user needs to 
+be asked to guess again. Then we use the input statement to ask the user for a 
+guess. The user's guess is then placed in the guess (what else?) variable.<br>
+<br>
+4) Tally the guess<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'Now add one to the count variable to 
+count the guesses<br>
+&nbsp; let count = count + 1</font><br>
+<br>
+Now we take the value of count and add one to it. Each time this code is 
+performed, count's value will increase by one.<br>
+<br>
+5) If the guess is right go to step (9)<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'check to see if the guess is right<br>
+&nbsp; if guess = guessMe then goto [win]</font><br>
+<br>
+This line compares the variable guess with the variable guessMe. If they are 
+equal, then we goto [win], which is equivalent to . . . go to step (9) in our 
+outline.<br>
+<br>
+6) If the guess is too low tell the user to guess higher<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'check to see if the guess is too low<br>
+&nbsp; if guess &lt; guessMe then print &quot;Guess higher.&quot;</font><br>
+<br>
+This line compares the variable guess with the variable guessMe. If guess is 
+less than guessMe, then display the text &quot;Guess higher.&quot;<br>
+<br>
+7) If the guess is too high tell the user to guess lower<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'check to see if the guess is too high<br>
+&nbsp; if guess &gt; guessMe then print &quot;Guess lower.&quot;</font><br>
+<br>
+This line compares the variable guess with the variable guessMe. If guess is 
+greater than guessMe, then display the text &quot;Guess lower.&quot;<br>
+<br>
+8) Go back to step 3<br>
+<br>
+<font size="2" face="Courier New">&nbsp; 'go back and ask again<br>
+&nbsp; goto [ask]</font><br>
+<br>
+9) Beep and tell the user how many guess it took to win<br>
+<br>
+<font face="Courier New" size="2">[win]<br>
+&nbsp; 'tell how many guesses it took to win<br>
+&nbsp; print &quot;You win! It took &quot;; count; &quot; guesses.&quot;<br>
+<br>
+&nbsp; 'reset the count variable to zero for the next game<br>
+&nbsp; let count = 0</font><br>
+<br>
+This is the code our game executes when the player wins. The beep statement 
+rings the terminal bell once. Then the print statement says that the game is won 
+and how many guesses it took. Finally, the let statement resets the count 
+variable to zero for the next game.<br>
+<br>
+10) Ask the user whether to play again<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'ask to play again<br>
+&nbsp; input &quot;Play again (Y/N)&quot;; play$</font><br>
+<br>
+This input statement asks whether or not to play again. The resulting string is 
+stored in the string variable called play$.<br>
+<br>
+11) If the user answers yes then goto step 1<br>
+<br>
+<font face="Courier New" size="2">&nbsp; if instr(&quot;YESyes&quot;, play$) &gt; 0 then goto 
+[start]</font><br>
+<br>
+This if . . . then statement uses the instr( ) function to determine whether the 
+player answered &quot;Y&quot;, &quot;y&quot;, &quot;YES&quot;, or &quot;yes&quot;. The instr( ) function checks to see 
+if the string in play$ is found anywhere in the string literal &quot;YESyes&quot;. If it 
+is, then instr( ) returns the position, which is then compared with 0 using the 
+&gt; operator. If the contents of play$ are found in &quot;YESyes&quot;, then the value 
+returned from instr( ) will be greater than zero, so that goto [start] will be 
+executed, and the game will be restarted.<br>
+<br>
+12) Thank the user for playing the game.<br>
+<br>
+<font face="Courier New" size="2">&nbsp; print &quot;Thanks for playing!&quot;</font><br>
+<br>
+13) End the program<br>
+<br>
+<font face="Courier New" size="2">&nbsp; end</font><br>
+<br>
+It is good practice place the end statement as the end of your BASIC programs. 
+It can also be used at any place where you want the program to stop running.</p>
+<p><b><font size="4"><a name="completeListing">Complete listing for HILO.BAS</a></font></b></p>
+
+<p>Here is the complete listing for HILO.BAS so that you can just copy and paste 
+it into Run BASIC and run it.<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'Here is an interactive HI-LO<br>
+&nbsp; 'Program<br>
+<br>
+[start]<br>
+&nbsp; guessMe = int(rnd(1)*100) + 1<br>
+<br>
+&nbsp; 'Clear the screen and print the title and instructions<br>
+&nbsp; cls<br>
+&nbsp; print &quot;HI-LO&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;I have decided on a number between one&quot;<br>
+&nbsp; print &quot;and a hundred, and I want you to guess&quot;<br>
+&nbsp; print &quot;what it is. I will tell you to guess&quot;<br>
+&nbsp; print &quot;higher or lower, and we'll count up&quot;<br>
+&nbsp; print &quot;the number of guesses you use.&quot;<br>
+&nbsp; print<br>
+<br>
+[ask]<br>
+&nbsp; 'Ask the user to guess the number and tally the guess<br>
+&nbsp; input &quot;OK. What is your guess?&quot;; guess<br>
+<br>
+&nbsp; 'Now add one to the count variable to count the guesses<br>
+&nbsp; let count = count + 1<br>
+<br>
+&nbsp; 'check to see if the guess is right<br>
+&nbsp; if guess = guessMe then goto [win]<br>
+&nbsp; 'check to see if the guess is too low<br>
+&nbsp; if guess &lt; guessMe then print &quot;Guess higher.&quot;<br>
+<br>
+&nbsp; 'check to see if the guess is too high<br>
+&nbsp; if guess &gt; guessMe then print &quot;Guess lower.&quot;<br>
+<br>
+&nbsp; 'go back and ask again<br>
+&nbsp; goto [ask]<br>
+<br>
+[win]<br>
+&nbsp; 'beep once and tell how many guesses it took to win<br>
+&nbsp; print &quot;You win! It took &quot;; count; &quot; guesses.&quot;<br>
+<br>
+&nbsp; 'reset the count variable to zero for the next game<br>
+&nbsp; let count = 0<br>
+<br>
+&nbsp; 'ask to play again<br>
+&nbsp; input &quot;Play again (Y/N)&quot;; play$<br>
+&nbsp; if instr(&quot;YESyes&quot;, play$) &gt; 0 then goto [start]<br>
+<br>
+&nbsp; print &quot;Thanks for playing!&quot;<br>
+&nbsp; end</font></p>
+
+</body>
+
+</html>

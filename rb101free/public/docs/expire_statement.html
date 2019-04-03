@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>EXPIRE [url$]</b></p>
+<p><b>Description:</b></p>
+<p>The EXPIRE statement forces the user's application session to expire.&nbsp; 
+An optional url$ expression can force a redirect to another page if desired.</p>
+<p><b>Examples:</b></p>
+<p><font face="Courier New" size="2">&nbsp; link #show3Plus4, &quot;Add 3 to 4&quot;, 
+[add3n4]<br>
+&nbsp; print &quot; &quot;;<br>
+&nbsp; link #sayHello, &quot;Use your words&quot;, [speak]<br>
+&nbsp; print &quot; &quot;;<br>
+&nbsp; link #endIt, &quot;End the program&quot;, [endIt]<br>
+&nbsp; wait<br>
+<br>
+[add3n4]<br>
+&nbsp; print &quot;3 + 4 = &quot;; 3 + 4<br>
+&nbsp; wait<br>
+<br>
+[speak]<br>
+&nbsp; print &quot;Hello, world!&quot;<br>
+&nbsp; wait<br>
+<br>
+[endIt]<br>
+&nbsp; expire &quot;http://localhost:8008/sessionexpired.html&quot;</font></p>
+
+
+
+
+</html>

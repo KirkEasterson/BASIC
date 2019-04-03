@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>RENDER #handle</b></p>
+<p><b>Description:</b></p>
+<p>The RENDER statement causes the object in the variable #handle to be rendered 
+onto the web page at the current position.&nbsp; The object can be one of 
+various different kinds including Graphic, Table, Program, etc.</p>
+<p>Some kinds of objects are rendered automatically.&nbsp; Specifically these 
+include Button, Link, Imagebutton, Textbox, Textarea, Checkbox, Radiogroup and 
+Passwordbox</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">&nbsp; 'use the RENDER statement to display 
+a table<br>
+&nbsp; dim multiply(4, 4)<br>
+&nbsp; for x = 0 to 4<br>
+&nbsp;&nbsp;&nbsp; for y = 0 to 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; multiply(x, y) = x * y<br>
+&nbsp;&nbsp;&nbsp; next y<br>
+&nbsp; next x<br>
+&nbsp; table #tbl, multiply()<br>
+&nbsp; #tbl columnnames(&quot;zero,one,two,three,four&quot;)<br>
+&nbsp; #tbl cssclass(&quot;fix&quot;)<br>
+&nbsp; render #tbl<br>
+<br>
+&nbsp; <br>
+&nbsp;</font></p>
+
+
+
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>FUNCTION functionName([varName1[, varName2...]])</b></p>
+<p><b>Description:</b></p>
+<p>This statement begins the definition of a function, which always ends with 
+the statement END FUNCTION.&nbsp; For example:</p>
+<p><font face="Courier New" size="2">&nbsp; function functionName()<br>
+&nbsp;&nbsp;&nbsp; 'code goes here<br>
+&nbsp; end function</font></p>
+<p>A function can return a string value, a numeric value, or an object.</p>
+<p><font face="Courier New" size="2">&nbsp; function functionName()&nbsp;&nbsp;&nbsp; 
+'return a number<br>
+&nbsp; function functionName$()&nbsp;&nbsp; 'return a string<br>
+&nbsp; function #functionName()&nbsp;&nbsp; 'return an object</font></p>
+<p>Zero or more parameters may be passed into the function. A function cannot 
+contain another function definition, nor a subroutine definition. Note that the 
+opening parenthesis is actually part of the function name. Do not include a 
+space between the name and the opening parenthesis, or the code generates an 
+error. </p>
+<p>Right:</p>
+<p><font face="Courier New" size="2">&nbsp; function functionName(var1, var2)</font></p>
+<p>Wrong:</p>
+<p><font face="Courier New" size="2">&nbsp; function functionName (var1, var2)</font></p>
+<p><b>Returning a Value</b></p>
+<p>To return a value from the function, assign the value to be returned to a 
+variable of the same name as the function. If no return value is specified, then 
+numeric and string functions will return 0 and empty string respectively.</p>
+<p><font face="Courier New" size="2">functionName = returnValueExpression</font></p>
+<p><b>Local Variables</b></p>
+<p>The variable names inside a function are scoped locally, meaning that the 
+value of any variable inside a function is different from the value of a 
+variable of the same name outside the function. </p>
+<p><b>Global Variables and Devices</b></p>
+<p>String, numeric and object variables declared with the
+<a href="global_statement.html">GLOBAL</a> statement are available in the main program and in subroutines and 
+functions.</p>
+<p>Arrays are global to a Run BASIC program, and visible inside a subroutine 
+without needing to be passed in. </p>
+<p>Special global status is given to certain default variables used for sizing, 
+positioning, and coloring windows and controls. These include variables 
+DefaultDir$, Platform$, UserInfo$, UrlKeys$, UserAddress$, ProjectsRoot$, 
+ResourcesRoot$, Err$, Err, EventKey$, RowIndex.&nbsp; The value of these 
+variables can be seen and modified in any subroutine/function.</p>
+<p><b>Branch Labels</b></p>
+<p>Branch labels are locally scoped. Code inside a function cannot see branch 
+labels outside the subroutine, and code outside a function cannot see branch 
+labels inside any subroutine.</p>
+<p><b>End Function</b></p>
+<p>The function definition must end with the expression END FUNCTION.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">&nbsp; 'count the words<br>
+&nbsp; input &quot;Type a sentence&gt;&quot;; sentence$<br>
+&nbsp; print &quot;There are &quot;; wordCount(sentence$); &quot; words in the sentence.&quot;<br>
+&nbsp; end<br>
+<br>
+function wordCount(aString$)<br>
+&nbsp; index = 1<br>
+&nbsp; while word$(aString$, index) &lt;&gt; &quot;&quot;<br>
+&nbsp;&nbsp;&nbsp; index = index + 1<br>
+&nbsp; wend<br>
+&nbsp; wordCount = index - 1<br>
+end function</font></p>
+<p>See also: <a href="sub_statement.html">SUB</a></p>
+
+
+</html>

@@ -1,0 +1,214 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Graphics</title>
+</head>
+
+<body>
+
+<p><font size="5"><b>Graphics Overview</b></font></p>
+
+<p align="right"><a href="rbhelp.html">Jump to Run BASIC Help File</a></p>
+
+<p><a href="#graphicsEssentials">Graphics Essentials</a><br>
+<a href="#turtleGraphics">Turtle Graphics</a><br>
+<a href="#gettingImages">Getting Images from Files</a><br>
+<a href="#graphicsCommands">Graphics Commands</a></p>
+
+<p><b><a name="graphicsEssentials"></a>Graphics Essentials</b></p>
+
+<p>Run BASIC provides many useful capabilities for drawing graphics and 
+including them in a web application.</p>
+<p>To create a graphical object in a Run BASIC program we use the GRAPHIC 
+statement, like so:</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 200, 150</font></p>
+<p>This statement creates a graphical object 200 wide by 150 high and assigns it 
+to the object variable (or handle) #myDrawing.&nbsp; Once we have this object we 
+can call methods on it to draw in different ways.&nbsp; Here is a small example 
+that draws a background color, then some lines and then a circle:</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 200, 150<br>
+&nbsp; #myDrawing fill(&quot;yellow&quot;)<br>
+&nbsp; #myDrawing line(25, 25, 175, 25)<br>
+&nbsp; #myDrawing line(25, 125, 175, 125)<br>
+&nbsp; #myDrawing place(100, 75)<br>
+&nbsp; #myDrawing circle(25)<br>
+&nbsp; render #myDrawing</font></p>
+<p>Here's what the resulting graphic looks like in your web application:</p>
+<p><img alt src="firstGraphic.png" width="200" height="150"></p>
+<p>Let's lay out in detail exactly what each line of code does:</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 200, 150</font></p>
+<p><font face="Times New Roman">As explained earlier, this GRAPHIC statement 
+creates a graphical object assigned to #myDrawing and which is 200 wide and 150 
+high.</font></p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing fill(&quot;yellow&quot;)</font></p>
+<p>This invokes the FILL method with the color &quot;yellow&quot; which paints the whole 
+of the graphical object yellow.&nbsp; There are other colors including red, 
+blue, green, white, black and more.</p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing line(25, 25, 175, 25)</font></p>
+<p>This invokes the LINE method and draws the topmost horizonal line in the 
+drawing from 25, 25 to 175, 25.&nbsp; The position of 0, 0 is the upper left 
+corner so that's a line that is 25 to the right and 25 down from the upper left 
+corner, and the other end of the line is 175 to the right and 25 down from the 
+upper left corner.</p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing line(25, 125, 175, 125)</font></p>
+<p>This invokes the LINE method again, this time to draw the bottommost line in 
+the drawing.</p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing place(100, 75)</font></p>
+<p>This invokes the PLACE method.&nbsp; The graphical object has a &quot;pen&quot; and 
+this method places the pen at the position 100, 75 which is the center of the 
+drawing.&nbsp; We do this to set up the next statement which draws a circle.</p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing circle(25)</font></p>
+<p>This invokes the CIRCLE method, which draws a circle at the current position 
+of the pen and having a radius of 25.</p>
+<p><font face="Courier New" size="2">&nbsp; render #myDrawing</font></p>
+<p>Finally, the RENDER statement causes the graphical object to appear in the 
+web application.&nbsp; Without this the drawing will not appear.</p>
+<p><b><font size="4"><a name="turtleGraphics"></a>Turtle Graphics</font></b></p>
+<p>Run BASIC supports an idea called turtle graphics.&nbsp; This is an idea made 
+popular by an language called Logo which was invented by Seymour Papert in 
+Boston, Massachusetts in the 1960's.&nbsp; A &quot;turtle&quot; is also known as a pen 
+because the computer controlled turtle robots that Seymour Papert used would 
+move over large sheets of paper and draw with a pen.&nbsp; Turtle graphics 
+drawings are created by moving and turning, moving some more and turning again, 
+etc.</p>
+<p>Here is an example of a turtle drawing of semicircle:</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 220, 220<br>
+&nbsp; #myDrawing fill(&quot;verylightgray&quot;)<br>
+&nbsp; #myDrawing place(50, 110)<br>
+&nbsp; #myDrawing north()<br>
+&nbsp; for x = 1 to 60<br>
+&nbsp;&nbsp;&nbsp; #myDrawing turn(3)<br>
+&nbsp;&nbsp;&nbsp; #myDrawing go(3)<br>
+&nbsp; next x<br>
+&nbsp; render #myDrawing</font></p>
+<p><img alt src="semicircle.png" width="220" height="220"></p>
+<p>That verylightgray isn't light enough for my taste.&nbsp; You can specify the 
+RBG (red, green, blue) values for a color instead, like so:</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 220, 220<br>
+&nbsp; #myDrawing fill(240, 240, 240)<br>
+&nbsp; #myDrawing place(50, 110)<br>
+&nbsp; #myDrawing north()<br>
+&nbsp; for x = 1 to 60<br>
+&nbsp;&nbsp;&nbsp; #myDrawing turn(3)<br>
+&nbsp;&nbsp;&nbsp; #myDrawing go(3)<br>
+&nbsp; next x<br>
+&nbsp; render #myDrawing</font></p>
+<p><img alt src="247DCF8.png" width="220" height="220"></p>
+<p>That's better!</p>
+<p>You don't need to do your drawing all in black.&nbsp; Let's brighten things 
+up a bit by adding a call to the COLOR method;</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 220, 220<br>
+&nbsp; #myDrawing fill(240, 240, 240)<br>
+&nbsp; #myDrawing place(50, 110)<br>
+&nbsp; #myDrawing north()<br>
+&nbsp; for x = 1 to 60<br>
+&nbsp;&nbsp;&nbsp; #myDrawing color(word$(&quot;red blue green&quot;, (x+19)/20))<br>
+&nbsp;&nbsp;&nbsp; #myDrawing turn(3)<br>
+&nbsp;&nbsp;&nbsp; #myDrawing go(3)<br>
+&nbsp; next x<br>
+&nbsp; render #myDrawing</font></p>
+<p><img alt src="4A46E78.png" width="220" height="220"></p>
+<p>Let's add some text to our semicircle.</p>
+<p><font face="Courier New" size="2">&nbsp; graphic #myDrawing, 220, 220<br>
+&nbsp; #myDrawing fill(240, 240, 240)<br>
+&nbsp; #myDrawing place(0, 14)<br>
+&nbsp; #myDrawing &quot;\Semicircle&quot;<br>
+&nbsp; #myDrawing place(50, 110)<br>
+&nbsp; #myDrawing north()<br>
+&nbsp; for x = 1 to 60<br>
+&nbsp;&nbsp;&nbsp; #myDrawing color(word$(&quot;red blue green&quot;, (x+19)/20))<br>
+&nbsp;&nbsp;&nbsp; #myDrawing turn(3)<br>
+&nbsp;&nbsp;&nbsp; #myDrawing go(3)<br>
+&nbsp; next x<br>
+&nbsp; render #myDrawing</font></p>
+<p><img alt src="53324B8.png" width="220" height="220"></p>
+<p>These two lines of code position the pen and draw the text:</p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing place(0, 14)<br>
+&nbsp; #myDrawing &quot;\Semicircle&quot;</font></p>
+<p><font face="Times New Roman">The \ tells the graphic object to display the 
+string that comes after it.&nbsp; Any additional \ characters will cause more 
+lines to be displayed.&nbsp; Try modifying the code like so:</font></p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing 
+&quot;\Semicircle\Multicolored&quot;</font></p>
+<p><font face="Times New Roman">If you need to display backslashes and are 
+willing to give up multiline text output then start your line like so:</font></p>
+<p><font face="Courier New" size="2">&nbsp; #myDrawing &quot;|Semicircle \ backslash 
+included&quot;</font></p>
+<p><b><font size="4"><a name="gettingImages"></a>Getting images from files</font></b></p>
+<p>You don't have to start with a blank graphic object.&nbsp; You can load 
+images from disk files if you need to.&nbsp; Here's two liner:</p>
+<p><font face="Courier New" size="2">&nbsp; loadgraphic #picture, 
+&quot;polandboating.jpg&quot;<br>
+&nbsp; render #picture</font></p>
+<p>Here's the result:</p>
+<p><img alt src="polandboats.jpg" width="332" height="505"></p>
+<p>Now we can also draw on the graphic object.&nbsp; Here is a quick example:</p>
+<p><font face="Courier New" size="2">&nbsp; loadgraphic #picture, 
+&quot;polandboating.jpg&quot;<br>
+&nbsp; howTall = #picture height()<br>
+&nbsp; #picture color(&quot;white&quot;)<br>
+&nbsp; title$ = &quot;Boating in Poland, 2007&quot;<br>
+&nbsp; xPosition = (#picture width() - #picture stringwidth(title$)) / 2<br>
+&nbsp; #picture place(xPosition, howTall - 14)<br>
+&nbsp; #picture &quot;\&quot;;title$<br>
+&nbsp; render #picture</font></p>
+<p>And here's the result!</p>
+<p><img alt src="titledpolandboats.jpg" width="332" height="505"></p>
+<p>See how we use the WIDTH and STRINGWIDTH methods to calculate the correct 
+position to display the title?&nbsp; </p>
+<p><font face="Courier New" size="2">&nbsp; xPosition = (#picture 
+width()-#picture stringwidth(title$))/2</font></p>
+<p>We also use the HEIGHT method so that the title can be displayed close to the 
+bottom, and the COLOR method to display the title as white instead of black.</p>
+
+<p><b><font size="4"><a name="graphicsCommands"></a>Graphics commands</font></b></p>
+
+<p>The complete list of methods which the graphic objects understand are as 
+follows:</p>
+
+<p>#handle BOX(x, y) - Draw a box from the current position to x, 
+y.<br>
+#handle CIRCLE(r) - Draw a circle of radius r at the current position.<br>
+#handle CLS([&quot;color&quot;] | [r, g, b]) - Clear the graphics area to white, or to 
+named color, or to an RBG color.<br>
+#handle COLOR(&quot;color&quot; | [r, g, b]) - Set the drawing color to a named color, or 
+to an RGB color.<br>
+#handle DISCARD() - Discard all the drawing operations in the currently open 
+segment.<br>
+#handle DOWN() - Set the drawing pen to down&nbsp; (this is the default).<br>
+#handle DRAWIMAGE(&quot;name&quot;, x, y) - Draw the image named &quot;name&quot; at x, y.<br>
+#handle FILL(&quot;color&quot; | [r, g, b]) - Like CLS() but it doesn't actually forget 
+previously drawn graphics<br>
+#handle FLUSH([&quot;name&quot;]) - Finish the current drawing segment (and optionally 
+name it &quot;name&quot;) and make another segment.<br>
+#handle FONT(&quot;fontname&quot;, pointSize [,&quot;bold&quot;][, &quot;italic&quot;]) - Specify a font by 
+name and size to use for drawing text.&nbsp; Italic and bold are optional.<br>
+#handle GO(d) - Make the turtle go distance d.<br>
+#handle DEBUG$() - Return the string &quot;Graphic&quot;.<br>
+#handle HEIGHT() - Return the height in pixels of the graphic object.<br>
+#handle HOME() - Place the pen in the center of the graphic area.<br>
+#handle ISNULL() - Return 0 which stands for false.&nbsp; The graphic object is 
+not the null object.<br>
+#handle LINE(originX, originY, destX, destY) - Draw a line from originX, originY 
+to destX, destY.<br>
+#handle NORTH() - Tell the turtle to point to the top of the graphic object.<br>
+#handle PLACE(x, y) - Set the position to be x, y.<br>
+#handle REDRAW() - Redraw all the existing drawing segments.<br>
+#handle SET(x, y) - Draw a point of the currently set size at x, y.<br>
+#handle SIZE(s) - Set the size of the drawing pen to s pixels.<br>
+#handle STRINGWIDTH(str$) - Return the width in pixels of str$ using the current 
+font.<br>
+#handle TURN(a) - Turn the turtle a degrees to the right.&nbsp; a can be 
+negative to turn to the left.<br>
+#handle UP() - Set the drawing pen to up (don't draw).<br>
+#handle WIDTH() - Return the width in pixels of the graphic object.<br>
+#handle X() - Return the current position x.<br>
+#handle Y() - Return the current position y.</p>
+
+</body>
+
+</html>

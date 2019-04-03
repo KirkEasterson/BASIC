@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>INPUT #handle &quot;string expression&quot;; variableName</b></p>
+<p><b>Description:</b></p>
+<p>This command has several possible forms:</p>
+<p><font face="Courier New" size="2">&nbsp; input var</font></p>
+<p>This form causes a program to stop and wait for user to enter data and press 
+the Enter key or click the Accept button. It will then assign the data entered 
+to var.</p>
+<p><font face="Courier New" size="2">&nbsp; input &quot;enter data&quot;; var</font></p>
+<p><font face="Times New Roman">or...</font></p>
+<p><font face="Courier New" size="2">&nbsp; prompt$ = &quot;enter data&quot;<br>
+&nbsp; input prompt$; var</font></p>
+<p>This form will display the string &quot;enter data&quot; and then stop and wait for 
+user to enter data and press the Enter key or click the Accept button. It will 
+then assign the data entered to var.</p>
+<p><font face="Courier New" size="2">&nbsp; input #name, var</font></p>
+<p>This form will get the next data item from the open file or device using 
+handle named #handle and assign the data to var. If no device or file exists 
+that uses the handle named #handle, then INPUT returns an error.</p>
+<p><font face="Courier New" size="2">&nbsp; input #name, var1, var2</font></p>
+<p>This form causes the next two data items to be fetched and assigned to var1 
+and var2.</p>
+<p><font face="Courier New" size="2">&nbsp; line input #name, var$</font></p>
+<p>The LINE INPUT statement will read from the file, ignoring commas in the 
+input stream and completing the data item only at the next carriage return or at 
+the end of file. This is useful for reading text with embedded commas</p>
+<p>Usage:</p>
+<p><font face="Courier New" size="2">&nbsp; 'Display a text file<br>
+&nbsp; filename$ = &quot;readme.txt&quot;<br>
+&nbsp; open filename$ for input as #text<br>
+<br>
+[loop]<br>
+&nbsp; if eof(#text) &lt;&gt; 0 then [quit]<br>
+&nbsp; input #text, item$<br>
+&nbsp; print item$<br>
+&nbsp; goto [loop]<br>
+<br>
+[quit]<br>
+&nbsp; close #text<br>
+&nbsp; print &quot;Done.&quot;<br>
+&nbsp; end</font></p>
+<p><b>Arrays</b></p>
+<p>You can use INPUT and LINE INPUT to fill arrays directly. To input directly 
+to an array:</p>
+<p><font face="Courier New" size="2">&nbsp; input array$(x)</font></p>
+<p>It is also possible to use this method to input more than one thing at a 
+time:</p>
+<p><font face="Courier New" size="2">&nbsp; input array$(x), string$, stuff(i)</font></p>
+<p><b>Type Coercion</b></p>
+<p>In many BASICs, if INPUT expects a numeric value and a non numeric or string 
+value is entered, the user will be faced with a comment something like 'Redo 
+From Start', and be expected to reenter.&nbsp; Run BASIC does not do this, but 
+instead will coerce the entry to fit into the variable.</p>
+<p>See also: <a href="functions.html#input">INPUT$(#h, n)</a>,
+<a href="functions.html#inputto">INPUTTO$(#h, delim$)</a>,
+<a href="lineInput_statement.html">LINE INPUT</a></p>
+
+
+</html>

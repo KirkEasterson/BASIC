@@ -1,0 +1,141 @@
+#runBasicMain {
+	border: 2px solid #FFF;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	clear: both;
+	height: -10px;
+}
+
+#contents {
+	padding: 1.5em;
+	background: #F3F3FF;
+	min-height: 300px;
+}
+
+#runBasicHeader {
+	position: relative;
+	width: 100%;
+	height: 3em;
+	width: 55em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#runBasicHeader ul#primary {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: -1px;
+	width: 55em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#runBasicHeader ul#primary li  {
+	display: inline;
+	list-style: none;
+}
+
+#runBasicHeader ul#primary a, #runBasicHeader ul#primary span, #runBasicHeader ul#primary a.current {
+	width: 8em;
+	display: block;
+	float: left;
+	padding: 4px 0;
+	margin: 1px 2px 0 0;
+	text-align: center;
+	font-family: tahoma, verdana, sans-serif;
+	font-size: 85%;
+	text-decoration: none;
+	color: #333;
+}
+
+#runBasicHeader ul#primary span, #runBasicHeader ul#primary a.current, #runBasicHeader ul#primary a.current:hover {
+	border: 2px solid #FFF;
+	border-bottom: none;
+	background: #FFF;
+	padding-bottom: 6px;
+	margin-top: 0;
+}
+
+#runBasicHeader ul#primary a {
+	background: transparent;
+	border: 1px solid #FFF;
+	border-bottom: none;
+}
+
+#runBasicHeader ul#primary a:hover {
+	margin-top: 0;
+	border-color: #FFF;
+	background: transparent;
+	padding-bottom: 5px;
+}
+
+#runBasicHeader ul#secondary {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	bottom: -1.4em;
+	left: 1px;
+	width: 50em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#runBasicHeader ul#secondary li a, #runBasicHeader ul#secondary li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#runBasicHeader ul#secondary li a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+#runBasicHeader ul#secondary li a:hover {
+	color: #333;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#runBasicHeader ul#secondary li a:active {
+	color: #000;
+	background: transparent;
+}
+
+#runBasicHeader ul#secondary li:last-child a { border: none; }
+
+#whitelink { color: #FFF }
+a { color: #444 }
+
+dt.tab { display: block; float: left; margin-right: 5px; text-align: center }
+dt.tab a { display: block; text-decoration: none; color: #333; font-size: 75%;
+ width: 7em; background: transparent; border: 1px solid #FFF;
+ font-family: tahoma, verdana, sans-serif;}
+dt.selectedtab { display: block; float: left; margin-right: 5px; text-align: center; color: #333 }
+dt.selectedtab a { display: block; text-decoration: none; color: black;
+ font-size: 75%; width: 7em; background: white;
+font-family: tahoma, verdana, sans-serif; }
+dt.btn { display: block; text-align: center }
+dt.btn a { display: block; text-decoration: none; color: #333; font-size: 75%;
+ width: 7em; background: transparent; border: 1px solid #FFF; }
+
+p.notice { background: pink; padding: 4px }
+#div-toolbar { background: transparent;  border: 1px solid #FFF; padding: 4px; white-space: pre }
+#div-rjtoolbar { text-align: right; background: transparent;  border: 1px solid #FFF;  padding: 4px ; white-space: pre }
+p.toolbar { background: transparent;  border: 1px solid #FFF; padding: 4px; white-space: pre }
+p.lesson { width: 75%; background: lightyellow; padding: 4px }
+
+#div-4 { font-style: italic; color: white; font-family: sans-serif; font-size: 36pt; font-weight: bold; background-repeat: no-repeat; background-image: url('cloudsbanner1.JPG') }
+#div-build { font-size: 9pt ; font-weight: normal; white-space: pre; color: #FFF }
+#lbcode { width: 5in; height: 4in }
+#lboutline { width: 1.5in; height: 4in; border: 1px solid: #000 }
+#lbcontent { width: 5in;  background: #FFFFAA; padding: 5px}
+#lboutline { float: left; width: 1.5in }
+#lbcontent {  margin-left: 1.6in }
+#lbcode {  margin-left: 1.6in }
+body { background-image: url('cloudysky1.JPG') }

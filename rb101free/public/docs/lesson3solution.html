@@ -1,0 +1,198 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lesson Three Solution</title>
+</head>
+
+<body>
+
+<p dir="ltr"><b><font size="5">Lesson 3 Homework Solution</font></b><br>
+Copyright 2007 Shoptalk Systems<br>
+All rights reserved</p>
+
+<p align="right"><a href="learnrunbasic.html">Return to Table of Contents</a></p>
+<p>
+<font face="Courier New" size="2">&nbsp; 'CALLER.LOG<br>
+&nbsp; 'Here is the solution to our homework assignment for<br>
+&nbsp; 'lesson 3 of our Run BASIC course<br>
+<br>
+[menu] 'display menu options<br>
+&nbsp; cls<br>
+&nbsp; print &quot;**Caller Log Program**&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot; 1) Enter a phone call&quot;<br>
+&nbsp; print &quot; 2) Search by caller's name&quot;<br>
+&nbsp; print &quot; 3) Search by person called&quot;<br>
+&nbsp; print &quot; 4) Quit&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;Choose an option from 1 to 4.&quot;<br>
+&nbsp; input &quot;&gt;&quot;; option<br>
+<br>
+&nbsp; if option &lt; 1 or option &gt; 4 then gosub [badOption]<br>
+&nbsp; if option = 1 then gosub [enterAPhoneCall]<br>
+&nbsp; if option = 2 then gosub [searchByCallersName]<br>
+&nbsp; if option = 3 then gosub [searchByPersonCalled]<br>
+&nbsp; if option = 4 then [quit]<br>
+&nbsp; goto [menu]<br>
+<br>
+[badOption] 'display a notice that a bad selection was made<br>
+&nbsp; print<br>
+&nbsp; print &quot;Option &quot;; option; &quot; is unsupported.&quot;<br>
+&nbsp; input &quot;Press Enter.&quot;; dummyVar$<br>
+&nbsp; return<br>
+<br>
+[enterAPhoneCall] 'accept a phone log entry from the user<br>
+&nbsp; cls<br>
+&nbsp; print &quot;**Enter a Phone Call**&quot;<br>
+&nbsp; print<br>
+<br>
+&nbsp; input &quot;Caller's name ?&quot;; callersName$<br>
+&nbsp; input &quot;Name of person called ?&quot;; personCalled$<br>
+&nbsp; input &quot;Date of call (press 'Enter' for &quot;+date$()+&quot;) ?&quot;; dateOfCall$<br>
+&nbsp; if dateOfCall$ = &quot;&quot; then dateOfCall$ = date$()<br>
+&nbsp; input &quot;Time of call (press 'Enter' for &quot;+time$()+&quot;) ?&quot;; timeOfCall$<br>
+&nbsp; if timeOfCall$ = &quot;&quot; then timeOfCall$ = time$()<br>
+<br>
+&nbsp; input &quot;Purpose of call ?&quot;; purposeOfCall$<br>
+&nbsp; input &quot;Phone # where the caller can be reached ?&quot;; callersPhone$<br>
+<br>
+[saveEditCancelLoop] 'give the user the option to save, edit or abort<br>
+&nbsp; cls<br>
+&nbsp; gosub [displayEntryInfo]<br>
+&nbsp; input &quot;Save, Edit, Cancel Entry (S/E/C)?&quot;; answer$<br>
+<br>
+&nbsp; if answer$ = &quot;S&quot; or answer$ = &quot;s&quot; then gosub [saveEntry] : goto [menu]<br>
+&nbsp; if answer$ = &quot;E&quot; or answer$ = &quot;e&quot; then gosub [editEntry]<br>
+&nbsp; if answer$ = &quot;C&quot; or answer$ = &quot;c&quot; then [menu]<br>
+<br>
+&nbsp; goto [saveEditCancelLoop]<br>
+<br>
+[displayEntryInfo] 'display call information<br>
+&nbsp; print &quot; Caller's name : &quot;; callersName$<br>
+&nbsp; print &quot; Name of person called : &quot;; personCalled$<br>
+&nbsp; print &quot; Date of call : &quot;; dateOfCall$<br>
+&nbsp; print &quot; Time of call : &quot;; timeOfCall$<br>
+&nbsp; print &quot; Purpose of call : &quot;; purposeOfCall$<br>
+&nbsp; print &quot;Caller can be reached at : &quot;; callersPhone$<br>
+&nbsp; return<br>
+<br>
+[editEntry] 'edit call information<br>
+&nbsp; cls<br>
+&nbsp; print &quot;**Edit Caller Entry**&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot; Caller's name : &quot;; callersName$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then callersName$ = newEntry$<br>
+<br>
+&nbsp; print &quot; Name of person called : &quot;; personCalled$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then personCalled$ = newEntry$<br>
+<br>
+&nbsp; print &quot; Date of call : &quot;; dateOfCall$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then dateOfCall$ = newEntry$<br>
+<br>
+&nbsp; print &quot; Time of call : &quot;; timeOfCall$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then timeOfCall$ = newEntry$<br>
+<br>
+&nbsp; print &quot; Purpose of call : &quot;; purposeOfCall$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then purposeOfCall$ = newEntry$<br>
+<br>
+&nbsp; print &quot;Caller can be reached at : &quot;; callersPhone$<br>
+&nbsp; input &quot; Press Enter, or retype &gt; &quot;; newEntry$<br>
+&nbsp; if newEntry$ &lt;&gt; &quot;&quot; then callersPhone$ = newEntry$<br>
+&nbsp; return<br>
+<br>
+[saveEntry] 'write the entry info to PHONELOG.TXT<br>
+&nbsp; open &quot;PHONELOG.TXT&quot; for append as #phones<br>
+&nbsp; print #phones, callersName$<br>
+&nbsp; print #phones, personCalled$<br>
+&nbsp; print #phones, dateOfCall$<br>
+&nbsp; print #phones, timeOfCall$<br>
+&nbsp; print #phones, purposeOfCall$<br>
+&nbsp; print #phones, callersPhone$<br>
+&nbsp; close #phones<br>
+&nbsp; return<br>
+<br>
+[searchByCallersName] 'look for a phone log entry by caller's name<br>
+&nbsp; cls<br>
+&nbsp; print &quot;**Search by Caller's Name**&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;Please enter a partial name to search by.&quot;<br>
+&nbsp; input &quot;&gt;&quot;; searchCaller$<br>
+&nbsp; if searchCaller$ = &quot;&quot; then [menu] 'nothing entered, abort search<br>
+&nbsp; searchCaller$ = upper$(searchCaller$) 'convert to uppercase for search<br>
+&nbsp; open &quot;PHONELOG.TXT&quot; for input as #in<br>
+&nbsp; foundFlag = 0<br>
+&nbsp; quitFlag = 0<br>
+&nbsp; if eof(#in) = -1 then [endOfCallerSearch]&nbsp; <br>
+<br>
+[searchByCallerLoop]<br>
+&nbsp; gosub [readEntry] 'get next entry from PHONELOG.TXT<br>
+&nbsp; if instr(upper$(callersName$), searchCaller$) &gt; 0 then gosub [matched]<br>
+&nbsp; if eof(#in) = 0 and quitFlag = 0 then [searchByCallerLoop]<br>
+<br>
+[endOfCallerSearch]<br>
+&nbsp; close #in<br>
+&nbsp; if foundFlag = 0 then print &quot;No matches.&quot;<br>
+&nbsp; input &quot;Press Enter.&quot;; dummyVar$<br>
+&nbsp; goto [menu]<br>
+<br>
+[searchByPersonCalled] 'look for a phone log entry by person called<br>
+&nbsp; cls<br>
+&nbsp; print &quot;**Search by Person Called**&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;Please enter a partial name to search by.&quot;<br>
+&nbsp; input &quot;&gt;&quot;; searchCalled$<br>
+&nbsp; if searchCalled$ = &quot;&quot; then [menu] 'nothing entered, abort search<br>
+&nbsp; searchCalled$ = upper$(searchCalled$) 'convert to uppercase for search<br>
+<br>
+&nbsp; open &quot;PHONELOG.TXT&quot; for input as #in<br>
+&nbsp; foundFlag = 0<br>
+&nbsp; quitFlag = 0<br>
+&nbsp; if eof(#in) = -1 then [endOfCalledSearch]<br>
+<br>
+[searchByCalledLoop]<br>
+&nbsp; gosub [readEntry] 'get next entry from PHONELOG.TXT<br>
+&nbsp; if instr(upper$(personCalled$), searchCalled$) &gt; 0 then gosub [matched]<br>
+&nbsp; if eof(#in) = 0 and quitFlag = 0 then [searchByCalledLoop]<br>
+<br>
+[endOfCalledSearch]<br>
+&nbsp; close #in<br>
+&nbsp; if foundFlag = 0 then print &quot;No matches.&quot;<br>
+&nbsp; input &quot;Press any key.&quot;; dummyVar$<br>
+&nbsp; goto [menu]<br>
+<br>
+[readEntry] 'read the next entry from PHONELOG.TXT<br>
+&nbsp; line input #in, callersName$<br>
+&nbsp; line input #in, personCalled$<br>
+&nbsp; line input #in, dateOfCall$<br>
+&nbsp; line input #in, timeOfCall$<br>
+&nbsp; line input #in, purposeOfCall$<br>
+&nbsp; line input #in, callersPhone$<br>
+&nbsp; return<br>
+<br>
+[matched] 'stop and show a match &amp; ask what to do next<br>
+&nbsp; foundFlag = 1<br>
+&nbsp; print &quot;---------Match---------&quot;<br>
+&nbsp; gosub [displayEntryInfo]<br>
+&nbsp; print<br>
+&nbsp; input &quot;Next Entry, Quit Searching (N/Q)&quot;; answer$<br>
+&nbsp; 'only check for quit response<br>
+&nbsp; if answer$ = &quot;Q&quot; or answer$ = &quot;q&quot; then quitFlag = 1<br>
+&nbsp; return<br>
+<br>
+[quit] 'end CALLER.BAS here<br>
+&nbsp; cls<br>
+&nbsp; print &quot;Quitting. Bye!&quot;<br>
+&nbsp; end</font></p>
+
+</body>
+
+</html>

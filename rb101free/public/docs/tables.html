@@ -1,0 +1,300 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Using Tables</title>
+</head>
+
+<body>
+
+<p><b><font size="5">Using Tables</font></b></p>
+
+<p align="right"><a href="rbhelp.html">Jump to Run BASIC Help File</a></p>
+<p><a href="#simpleTable">A Simple Table</a><br>
+<a href="#specifying">Specifying Column Names</a><br>
+<a href="#addCaption">Adding a Caption</a><br>
+<a href="#usingLinks">Using Links</a><br>
+<font face="Times New Roman"><a href="#stylingTables">Styling Tables with Cascading Style Sheets 
+(CSS)</a><br>
+</font><a href="#rowIndex">Detecting clicks by numeric position using RowIndex</a><font face="Times New Roman"><br>
+<a href="#tableMethods">Table Methods</a><br>
+</font><a href="#xmlStructure">XML Structure of Tables</a></p>
+<p><b><a name="simpleTable"></a>A Simple Table</b></p>
+<p>Run BASIC has a useful facility for displaying information from the contents 
+of an array in a web 
+application by using tables.&nbsp; Tables are a feature provided by the web 
+browser which Run BASIC makes easy to produce.&nbsp; Here is a very simple 
+example of a table:</p>
+<p><font face="Courier New" size="2">&nbsp; dim ticTacToe$(2,2)<br>
+&nbsp; ticTacToe$(0, 0) = &quot;X&quot;<br>
+&nbsp; ticTacToe$(1, 1) = &quot;X&quot;<br>
+&nbsp; ticTacToe$(2, 2) = &quot;X&quot;<br>
+&nbsp; ticTacToe$(1, 0) = &quot;O&quot;<br>
+&nbsp; ticTacToe$(2, 1) = &quot;O&quot;<br>
+&nbsp; ticTacToe$(1, 2) = &quot;O&quot;<br>
+&nbsp; table #ttt, ticTacToe$()<br>
+&nbsp; render #ttt</font></p>
+<p><font face="Times New Roman">This simple little program creates an array 3 by 
+3 and fills it with X's and O's as if you are playing Tic Tac Toe.&nbsp; Then it 
+creates a table from the array and finally it renders that table into the web 
+page.&nbsp; Here's what it looks like:</font></p>
+<table>
+  <span class="row-odd">
+  <tr>
+    <td><font face="Courier New" size="2">X</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  </span>
+  <tr>
+    <td><font face="Courier New" size="2">O</font></td>
+    <td><font face="Courier New" size="2">X</font></td>
+    <td><font face="Courier New" size="2">O</font></td>
+  </tr>
+  <span class="row-odd">
+  <tr>
+    <td>&nbsp;</td>
+    <td><font face="Courier New" size="2">O</font></td>
+    <td><font face="Courier New" size="2">X</font></td>
+  </tr>
+  </span>
+</table>
+<p><font face="Times New Roman">As you can see, X wins this round!</font></p>
+<p><b><font face="Times New Roman"><a name="specifying"></a>Specifying Column Names</font></b></p>
+<p><font face="Times New Roman">You can add column names to a table by using the 
+COLUMNNAMES() method.&nbsp; Here is an example using a coffee theme:</font></p>
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp; dim options$(1, 2)<br>
+&nbsp; options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp; options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp; options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp; options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp; options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp; options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp; table #menu, options$()<br>
+&nbsp; #menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp; render #menu<br>
+&nbsp; wait</font></p>
+<p>The resulting table looks like this:</p>
+<blockquote>
+<p><img border="0" src="table1.gif" width="274" height="69"></p>
+</blockquote>
+<p><b><font face="Times New Roman"><a name="addCaption"></a>Adding a Caption</font></b></p>
+<p>To add a caption which will describe the information in your table, use the 
+CAPTION() method:</p>
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp; dim options$(1, 2)<br>
+&nbsp; options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp; options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp; options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp; options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp; options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp; options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp; table #menu, options$()<br>
+&nbsp; #menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp; #menu caption(&quot;Coffee menu&quot;)<br>
+&nbsp; render #menu<br>
+&nbsp; wait</font></p>
+<p>The resulting table looks like this:</p>
+
+<blockquote>
+<p><img border="0" src="table2.gif" width="278" height="93"></p>
+
+</blockquote>
+<p><b><font face="Times New Roman"><a name="usingLinks"></a>Using Links</font></b></p>
+
+<p><font face="Times New Roman">You can make items in one or more columns of a 
+table into links, which can invoke subroutines by using the LINK() method:</font></p>
+
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp; dim options$(1, 2)<br>
+&nbsp; options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp; options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp; options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp; options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp; options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp; options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp; table #menu, options$()<br>
+&nbsp; #menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp; #menu caption(&quot;Coffee menu&quot;)<br>
+&nbsp; #menu link(&quot;Drink type&quot;, &quot;[order]&quot;)<br>
+&nbsp; render #menu<br>
+&nbsp; wait</font></p>
+
+<p><font face="Courier New" size="2">[order]<br>
+&nbsp; print &quot;You ordered &quot;; EventKey$<br>
+&nbsp; wait</font></p>
+<p>The resulting table looks like this:</p>
+<blockquote>
+  <p><img border="0" src="table3.gif" width="282" height="97"></p>
+</blockquote>
+<p><b><font face="Times New Roman"><a name="stylingTables"></a>Styling Tables with Cascading Style Sheets 
+(CSS)</font></b></p>
+<p><font face="Times New Roman">To add some color or other visual attributes to 
+a table you can specify CSS rules for different parts of the table.&nbsp; Note: 
+The same techniques shown here also apply to styling tables rendered for 
+database connections like <a href="sqlite.html">SQLite</a>.&nbsp; </font></p>
+<p><font face="Times New Roman">Here 
+we show how to add a background color to the caption:</font></p>
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp;
+dim options$(1, 2)<br>
+&nbsp;
+options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp;
+options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp;
+options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp;
+options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp;
+options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp;
+options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp;
+table #menu, options$()<br>
+&nbsp;
+#menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp;
+#menu caption(&quot;Coffee menu&quot;)<br>
+&nbsp;
+#menu link(&quot;Drink type&quot;, &quot;[order]&quot;)<br>
+&nbsp;
+'set a background color (light blue) to the caption<br>
+&nbsp;
+cssclass &quot;caption&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp;
+render #menu<br>
+&nbsp;
+wait<br>
+<br>
+[order]<br>
+&nbsp; print &quot;You ordered &quot;; EventKey$<br>
+&nbsp; wait</font></p>
+<p>The resulting table looks like this:</p>
+
+<blockquote>
+<p><img border="0" src="table4.gif" width="282" height="97"></p>
+
+</blockquote>
+
+<p>Let's add a couple more CSS rules to our table.&nbsp; The &quot;table&quot; rule adds a 
+border, and the &quot;tr&quot; rule adds color to the tr element (tr means table row).</p>
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp; dim options$(1, 2)<br>
+&nbsp; options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp; options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp; options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp; options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp; options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp; options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp; table #menu, options$()<br>
+&nbsp; #menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp; #menu caption(&quot;Coffee menu&quot;)<br>
+&nbsp; #menu link(&quot;Drink type&quot;, &quot;[order]&quot;)<br>
+&nbsp; 'set a background color (light blue) to the caption<br>
+&nbsp; cssclass &quot;caption&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp; cssclass &quot;table&quot;, &quot;{ border: 3px ridge #DDF ; border-spacing: 4px }&quot;<br>
+&nbsp; cssclass &quot;tr&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp; render #menu<br>
+&nbsp; wait<br>
+<br>
+[order]<br>
+&nbsp; print &quot;You ordered &quot;; EventKey$<br>
+&nbsp; wait</font></p>
+<p>The resulting table looks like this:</p>
+
+<blockquote>
+<p><img border="0" src="table5.gif" width="290" height="110"></p>
+
+</blockquote>
+
+<p><b><a name="rowIndex"></a>Detecting clicks by numeric position using RowIndex</b></p>
+
+<p>Sometimes it may be useful to know which link in a table is clicked by the 
+row that it is contained in.&nbsp; If the link is in the first row is position 
+1, the second row is position 2, etc.&nbsp; Run BASIC provides a global variable 
+RowIndex which contains the row index of the last link clicked in table.&nbsp; 
+So with a minor alteration to our Coffee menu program above you can see how this 
+works:</p>
+
+<p><font face="Courier New" size="2">&nbsp; 'present some options<br>
+&nbsp; dim options$(1, 2)<br>
+&nbsp; options$(0, 0) = &quot;Regular&quot;<br>
+&nbsp; options$(0, 1) = &quot;Latte&quot;<br>
+&nbsp; options$(0, 2) = &quot;Espresso&quot;<br>
+&nbsp; options$(1, 0) = &quot;Classic drip&quot;<br>
+&nbsp; options$(1, 1) = &quot;Coffee and frothy milk&quot;<br>
+&nbsp; options$(1, 2) = &quot;Concentrated coffee goodness&quot;<br>
+&nbsp; table #menu, options$()<br>
+&nbsp; #menu columnnames(&quot;Drink type,Description&quot;)<br>
+&nbsp; #menu caption(&quot;Coffee menu&quot;)<br>
+&nbsp; #menu link(&quot;Drink type&quot;, &quot;[order]&quot;)<br>
+&nbsp; 'set a background color (light blue) to the caption<br>
+&nbsp; cssclass &quot;caption&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp; cssclass &quot;table&quot;, &quot;{ border: 3px ridge #DDF ; border-spacing: 4px }&quot;<br>
+&nbsp; cssclass &quot;tr&quot;, &quot;{ background: #CCF }&quot;<br>
+&nbsp; render #menu<br>
+&nbsp; wait<br>
+<br>
+[order]<br>
+&nbsp; print &quot;You ordered &quot;; options$(0, RowIndex-1)<br>
+&nbsp; wait</font></p>
+
+<p><b><a name="tableMethods"></a>TABLE methods</b></p>
+
+<p>Here are the methods which can be used with tables:</p>
+
+<p>#handle COLUMNNAMES(expr$) - Set the column names using a 
+comma delimited string expression<br>
+#handle CAPTION(expr$) - Set the caption using expr$<br>
+#handle LINK(columnNameExpr$, &quot;handler&quot;) - Make the items in a column into links 
+using handler (either a sub or a branch label) when the user clicks<br>
+#handle ISNULL() - Returns zero (or false)<br>
+#handle DEBUG$() - Returns the string &quot;Table&quot;</p>
+
+<p>Here are the styling related methods:</p>
+
+<p>#handle CSSCLASS(expr$) - Set the CSS class tag to expr$<br>
+#handle TRCLASS(expr$) - Set the CSS class tag for table rows to expr$<br>
+#handle TDCLASS(expr$) - Set the CSS class tag for row data items to expr$<br>
+#handle THCLASS(expr$) - Set the CSS class tag for header row items to expr$<br>
+#handle CAPTIONCLASS(expr$) - Set the CSS class tag for the table caption to expr$<br>
+#handle ALLCLASS(expr$) - Set the CSS class tag for all of the properties of the 
+table to expr$</p>
+
+<p><b><a name="xmlStructure"></a>XML Structure of Rendered Tables</b></p>
+<p>Here is an example of XML generated for the table in the coffee example 
+above.&nbsp; Some values have been simplified and link related javascript is 
+removed for clarity.&nbsp; This information is useful for CSS work, and also for 
+XML parsing purposes.</p>
+<p><font face="Courier New" size="2">&lt;table&gt;<br>
+&nbsp; &lt;caption &gt;Coffee menu&lt;/caption&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;th&gt;Drink type&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;span class=&quot;row-odd&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval1_k=kval2&quot;&gt;Regular&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;Classic drip&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;/span&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval3_k=kval4&quot;&gt;Latte&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Coffee and frothy milk&lt;/td&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;span class=&quot;row-odd&quot;&gt;<br>
+&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;a href=&quot;?_s=sval5_k=kval6&quot;&gt;Espresso&lt;/a&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Concentrated coffee goodness&lt;/td&gt;<br>
+&nbsp; &lt;/tr&gt;<br>
+&nbsp; &lt;/span&gt;<br>
+&lt;/table&gt;</font></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

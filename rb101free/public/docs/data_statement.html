@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>DATA value[, value...]</b></p>
+<p><b>Description:</b></p>
+<p>The DATA statement provides a convenient way to insert data into programs. 
+The DATA can be read once or many times using the
+<a href="../../../Program%20Files/Liberty%20BASIC%20v4.04%20beta%203/lb4help/LibertyBASIC_4_web/html/libe517v.htm">
+READ</a> statement. A DATA statement doesn't actually perform an action when it 
+is encountered in the program's code.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">&nbsp; 'read the numbers and their 
+descriptions<br>
+&nbsp; while desc$ &lt;&gt; &quot;end&quot;<br>
+&nbsp;&nbsp;&nbsp; read desc$, value<br>
+&nbsp;&nbsp;&nbsp; print desc$; &quot; is the name for &quot;; value<br>
+&nbsp; wend<br>
+<br>
+&nbsp; 'here is our data<br>
+&nbsp; data &quot;one&quot;, 1, &quot;two&quot;, 2, &quot;three&quot;, 3, &quot;end&quot;, 0<br>
+&nbsp; end</font></p>
+<p>One or more DATA statements form the whole set of data elements. For example, 
+the data represented in the example above can also be listed in more than one 
+DATA statement:</p>
+<p><font face="Courier New" size="2">&nbsp; 'here is our data in two lines 
+instead of one<br>
+&nbsp; data &quot;one&quot;, 1, &quot;two&quot;, 2<br>
+&nbsp; data &quot;three&quot;, 3, &quot;end&quot;, 0</font></p>
+<p>DATA is local to the subroutine or function it is defined in.</p>
+<p><b>Error Handling</b></p>
+<p>An attempt to read more DATA items than are contained in the DATA lists 
+causes the program to halt with an error. Notice that in the examples above, an 
+&quot;end&quot; tag is placed in the DATA and when it is reached, the program stops 
+READing DATA. This is an excellent way to prevent errors from occurring. If an 
+end tag or flag of some sort is not used, be sure that other checks are in place 
+to prevent the READ statement from trying to access more DATA items than are 
+contained in the DATA statements.</p>
+<p>See also: <a href="read_statement.html">READ</a>, <a href="restore_statement.html">RESTORE</a></p>
+
+
+</html>

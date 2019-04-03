@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<style>
+<!--
+div{color:#000}.g{margin:1em 0}td{color:#000}.j{width:34em}-->
+</style>
+</head>
+
+<body>
+
+<p><font size="5"><b>Sending Email</b></font></p>
+<p align="right"><a href="rbhelp.html">Jump to Run BASIC Help File</a></p>
+<p><a href="#gettingAnSmtpSender">Getting an SMTP Sender</a><br>
+<a href="#smtpSenderMethods">SMTPSender methods</a></p>
+<p>Run BASIC includes an object for sending email using an external SMTP server.</p>
+<p><b><a name="gettingAnSmtpSender"></a>Getting an SMTP Sender</b></p>
+<p>Use the SMTPSENDER statement to get an SMTP sender object.&nbsp; Specify an 
+object variable and also the domain of the mail server.&nbsp; For example:</p>
+
+<p><font face="Courier New" size="2">&nbsp; <a name="xmlparserMethods">
+smtpsender #aSender, &quot;mail.myserver.com&quot;</a></font></p>
+
+<p><font face="Times New Roman">Then set more parameters by calling methods on 
+the object.&nbsp; For example:</font></p>
+
+<p><font face="Courier New" size="2">&nbsp; <a name="xmlparserMethods">
+smtpsender #aSender, &quot;mail.myserver.com&quot;<br>
+&nbsp; #aSender password(&quot;myPassword&quot;)<br>
+&nbsp; senderAddr$ = &quot;Joe the Plumber&lt;joetp@myserver.com&gt;&quot;<br>
+&nbsp; receiverAddr$ = &quot;some-guy@gmail.com&quot;<br>
+&nbsp; #aSender send(fromAddr$, toAddr$, _<br>
+&nbsp;&nbsp;&nbsp; &quot;Fixing leaky pipes&quot;, _<br>
+&nbsp;&nbsp;&nbsp; &quot;I'll be over after lunch Mr. McCain!&quot;)</a></font></p>
+
+<p><font face="Times New Roman">If you do not have a full name for the from 
+address the SMTP sender will use the email address for the full name.&nbsp; For 
+example:</font></p>
+
+<p><font face="Courier New" size="2"><a name="xmlparserMethods">&nbsp; fromAddr$ 
+= &quot;joetp@myserver.com&quot;<br>
+&nbsp;</a></font></p>
+
+<p><b><a name="smtpSenderMethods"></a>SMTPSENDER methods</b></p>
+
+<p>#handle SEND(senderAddr$, receiverAddr$, subject$, message$) - Send a message 
+using the senderAddr$ and receiverAddr$, and specifying the subject$ and 
+message$.<br>
+#handle PASSWORD(password$) - Provide the password the SMTP server will expect 
+for the sender's address.<br>
+#handle ISNULL() - Returns zero (or false)<br>
+#handle DEBUG$() - Returns the string &quot;SMTPSender&quot;</p>
+
+</body>
+
+</html>

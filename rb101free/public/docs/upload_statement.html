@@ -1,0 +1,37 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>UPLOAD prompt$; filename$</b></p>
+<p>Display a widget on the web page for uploading a file, and pause to wait for 
+the file to be uploaded.</p>
+<p>A field will be displayed for typing in the name of a file on the local hard 
+drive of the client user, and a browse button is also supplied so the user 
+doesn't need to type the filename.&nbsp; Once the file is specified, the user 
+clicks on the 'Upload' button and the file is transmitted and saved into the 
+default directory.&nbsp; The name of the file is placed into filename$.&nbsp; 
+The program then continues executing.</p>
+<p><b>Example:</b><font face="Courier New" size="2"><br>
+<br>
+&nbsp; print &quot;JPG uploader&quot;<br>
+&nbsp; upload &quot;Choose a JPG file to upload. &quot;; nameOfJpg$<br>
+&nbsp; loadgraphic #jpgImage, nameOfJpg$<br>
+&nbsp; render #jpgImage</font></p>
+
+
+
+
+</html>

@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>RESTORE [optional branch label or line number]</b></p>
+<p><b>Description:</b></p>
+<p>RESTORE will reset the reading of DATA statements so that the next READ will 
+get information from the first DATA statement in the program (or the first DATA 
+statement in a function or subroutine, if this is where the RESTORE is 
+executed).&nbsp; RESTORE without a branch label or line number will reset to the 
+beginning of the first DATA item.</p>
+<p><b>Example:</b></p>
+<p><font face="Courier New" size="2">[loop]<br>
+&nbsp; input &quot;set 1, 2 or 3&quot;; a<br>
+&nbsp; select case a<br>
+&nbsp;&nbsp;&nbsp; case 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restore 100<br>
+&nbsp;&nbsp;&nbsp; case 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restore 200<br>
+&nbsp;&nbsp;&nbsp; case 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restore 300<br>
+&nbsp;&nbsp;&nbsp; case else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print &quot;Try again.&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto [loop]<br>
+&nbsp; end select<br>
+&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a$<br>
+&nbsp;&nbsp;&nbsp; print a$<br>
+&nbsp; next x<br>
+&nbsp; goto [loop]<br>
+<br>
+100 data &quot;a&quot;, &quot;b&quot;, &quot;c&quot;<br>
+200 data &quot;d&quot;, &quot;e&quot;, &quot;f&quot;<br>
+300 data &quot;g&quot;, &quot;h&quot;, &quot;i&quot;</font></p>
+<p>See also: <a href="read_statement.html">READ</a>,
+<a href="data_statement.html">DATA</a></p>
+
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>CSSID #idname, cssrule$</b></p>
+<p><b>Description:</b></p>
+<p>Sets a CSS rule that will apply to any widget that has an id matching #idname.&nbsp; 
+This can be used to change the color, size, border, etc. of widgets on a web 
+page, or for the creation of special effects.&nbsp; The CSSID statement is also 
+useful for setting a rule for a <a href="div_statement.html">DIV</a> statement.</p>
+<p><b>Example:</b><br>
+<font face="Courier New" size="2"><br>
+&nbsp; 'set a rule for objects with id &quot;custom&quot;<br>
+&nbsp; cssid #custom, &quot;{ background: yellow}&quot;<br>
+&nbsp; link #a, &quot;link a&quot;, [go]<br>
+&nbsp; print &quot; &quot;;<br>
+&nbsp; link #b, &quot;link b&quot; ,[go]<br>
+&nbsp; print &quot; &quot;;<br>
+&nbsp; link #yel, &quot;make me yellow&quot;, [go]<br>
+&nbsp; #yel setid(&quot;custom&quot;)<br>
+&nbsp; wait<br>
+<br>
+[go]<br>
+&nbsp; print<br>
+&nbsp; print EventKey$; &quot; clicked&quot;</font></p>
+
+
+</html>

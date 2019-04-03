@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>RAW expr$</b></p>
+<p><b>Description:</b></p>
+<p>Stop execution and return the contents of expr$ as the entire web 
+page with a MIME type of text/plain.</p>
+<p>This is useful as a way to create a web service that can optionally take some 
+input and produces a plain text result.&nbsp; This way you can provide 
+information or processing to others on the Internet via HTTP.</p>
+<p><b>Example:</b></p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; 'adder.bas<br>
+&nbsp; 'get a first and second number from UrlKeys$<br>
+&nbsp; 'expected format for UrlKey$ is &quot;app=adder&amp;first=number&amp;second=number<br>
+&nbsp; firstPar$ = word$(UrlKeys$, 2, &quot;&amp;first=&quot;)<br>
+&nbsp; first = val(word$(firstPar$, 1, &quot;=&quot;))<br>
+&nbsp; secondPar$ = word$(UrlKeys$, 2, &quot;&amp;second=&quot;)<br>
+&nbsp; second = val(word$(secondPar$, 1, &quot;=&quot;))<br>
+&nbsp; raw str$(first+second)</font></p>
+
+
+
+
+</html>

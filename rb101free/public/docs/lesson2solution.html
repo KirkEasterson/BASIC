@@ -1,0 +1,126 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lesson Two Solution</title>
+</head>
+
+<body>
+
+<p><b><font size="5">Homework Solution</font></b><br>
+Copyright 2007 Shoptalk Systems<br>
+All Rights Reserved</p>
+
+<p align="right"><a href="learnrunbasic.html">Return to Table of Contents</a></p>
+<p>1) Add code to ARRAYS.BAS after [quit] to display all the names entered.<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'ARRAYS.BAS<br>
+&nbsp; 'List handling with arrays<br>
+&nbsp; 'Here is a version that displays the names entered<br>
+&nbsp; 'after [quit]<br>
+<br>
+&nbsp; dim names$(10) 'set up our array to contain 10 items<br>
+<br>
+[askForName] 'ask for a name<br>
+&nbsp; input &quot;Please give me your name ?&quot;; yourName$<br>
+<br>
+&nbsp; if yourName$ = &quot;&quot; then print &quot;No name entered.&quot; : goto [quit]<br>
+<br>
+&nbsp; index = 0<br>
+[insertLoop]<br>
+&nbsp; 'check to see if index points to an unused item in the array<br>
+&nbsp; if names$(index) = &quot;&quot; then names$(index) = yourName$ : goto [nameAdded]<br>
+&nbsp; index = index + 1 'add 1 to index<br>
+&nbsp; if index &lt; 10 then [insertLoop] 'loop back until we have counted to 10<br>
+<br>
+&nbsp; 'There weren't any available slots, inform user<br>
+&nbsp; print &quot;All ten name slots already used!&quot;<br>
+&nbsp; goto [quit]<br>
+<br>
+[nameAdded] 'Notify the name add was successful<br>
+&nbsp; print yourName$; &quot; has been added to the list.&quot;<br>
+&nbsp; goto [askForName]<br>
+<br>
+[quit]<br>
+&nbsp; 'display all the entered names<br>
+&nbsp; print<br>
+&nbsp; print &quot;Here is a list of the names entered:&quot;<br>
+&nbsp; print &quot;------------------------------------&quot;<br>
+&nbsp; index = 0<br>
+&nbsp; <br>
+[displayLoop]<br>
+&nbsp; if names$(index) &lt;&gt; &quot;&quot; then print names$(index)<br>
+&nbsp; index = index + 1<br>
+&nbsp; if index &lt; 10 then [displayLoop]<br>
+&nbsp; end<br>
+</font><br>
+<br>
+2) Modify the AVERAGE.BAS program so it asks for a name and age for up to 20 
+people. The names should be managed in a string array (remember ARRAYS.BAS?) 
+that you'll add to the program. When the list of entries is displayed, each name 
+is to be displayed with its age. Then the total and average age will be 
+displayed after this. Call the program AGES.BAS.<br>
+<br>
+<font face="Courier New" size="2">&nbsp; 'AGES.BAS<br>
+&nbsp; 'Accept some names and ages from the user, then total and average them<br>
+&nbsp; dim numbers(20)<br>
+&nbsp; dim names$(20)<br>
+&nbsp; print &quot;AGES.BAS&quot;<br>
+&nbsp; print<br>
+<br>
+&nbsp; 'loop up to 20 times, getting names and ages<br>
+&nbsp; print &quot;Enter up to 20 names with ages.&quot;<br>
+&nbsp; print &quot;A blank name entry ends the series.&quot;<br>
+<br>
+[entryLoop] 'loop around until a zero entry or until index = 20<br>
+&nbsp; 'get a name and age<br>
+&nbsp; print &quot;Name &quot;; index + 1;<br>
+&nbsp; input name$<br>
+&nbsp; if name$ = &quot;&quot; then [endSeries] 'quit if name$ is blank<br>
+<br>
+&nbsp; print &quot;Age &quot;;<br>
+&nbsp; input age<br>
+<br>
+&nbsp; index = index + 1 'add one to index<br>
+&nbsp; names$(index) = name$ 'set the specified array item to be name$<br>
+&nbsp; numbers(index) = age 'set the specified array item to be age<br>
+&nbsp; total = total + age 'add entry to the total<br>
+<br>
+&nbsp; if index = 20 then [endSeries] 'if 20 values were entered, exit loop<br>
+&nbsp; goto [entryLoop] 'go back and get another entry<br>
+<br>
+[endSeries] 'entries are finished<br>
+&nbsp; 'Set entryCount to index<br>
+&nbsp; entryCount = index<br>
+&nbsp; if entryCount = 0 then print &quot;No Entries.&quot; : goto [quit]<br>
+<br>
+&nbsp; print &quot;Entries completed.&quot;<br>
+&nbsp; print<br>
+&nbsp; print &quot;Here are the &quot;; entryCount; &quot; entries:&quot;<br>
+&nbsp; print &quot;-----------------------------&quot;<br>
+<br>
+&nbsp; 'This loop displays each entered value in turn.<br>
+&nbsp; 'Notice that we re-use the index variable. It<br>
+&nbsp; 'can be confusing to use a new variable for each<br>
+&nbsp; 'new loop.<br>
+&nbsp; index = 0<br>
+&nbsp; [displayLoop]<br>
+&nbsp; index = index + 1<br>
+&nbsp; print &quot;Entry &quot;; index; &quot; is &quot;; names$(index); &quot;, age &quot;; numbers(index)<br>
+<br>
+&nbsp; if index &lt; entryCount then [displayLoop]<br>
+<br>
+&nbsp; 'Now display the total and average value<br>
+&nbsp; print<br>
+&nbsp; print &quot;The total age is &quot;; total<br>
+&nbsp; print &quot;The average age is &quot;; total / entryCount<br>
+<br>
+[quit]<br>
+&nbsp; end</font></p>
+
+</body>
+
+</html>

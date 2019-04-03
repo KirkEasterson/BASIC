@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>WAIT</b></p>
+<p><b>Description:</b></p>
+<p>The WAIT statement causes a program to stop and wait for user interface 
+interaction in the web browser.</p>
+<p>Any output produced using PRINT, HTML, HEAD statements and any widgets added 
+like links, buttons, fields, etc. before a WAIT statement will appear in the 
+user's web browser when the WAIT statement is reached.&nbsp; The user must then 
+click on a link, button, etc. to cause further program execution to occur.</p>
+<p><b>Example:</b></p>
+<p dir="ltr"><font face="Courier New" size="2">&nbsp; print &quot;Link tester&quot;<br>
+&nbsp; link #testIt, &quot;Click to test me&quot;, [linkAction]<br>
+&nbsp; print<br>
+&nbsp; wait<br>
+<br>
+[linkAction]<br>
+&nbsp; print &quot;Test successful!&nbsp; Try again.&quot;<br>
+&nbsp; wait</font></p>
+
+<p dir="ltr"><font face="Times New Roman">Notice there are two WAIT statements.&nbsp; 
+The first one causes the program to wait for user interaction after the program 
+starts up, and the second one cause the program to wait after the user clicks on 
+the &quot;Click to test me&quot; link is &quot;Test successful! Try again.&quot; is displayed.&nbsp; 
+The program is not finished executing after this happens because the program is 
+again waiting.&nbsp; The user can click on the &quot;Click to test me&quot; link more than 
+once and the [linkAction] routine will be executed each time.</font></p>
+
+
+
+</html>

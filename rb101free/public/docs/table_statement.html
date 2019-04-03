@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Run BASIC Documentation</title>
+</head>
+
+<body>
+
+<b>
+
+<font SIZE="5">
+<p><img border="0" src="rbhelp.JPG" width="633" height="63"><br>
+</font></b>Copyright 2008 Shoptalk Systems</p>
+<p><b>TABLE #handle, arrayName()</b></p>
+<p>Create a table object from the array named arrayName() and assign it to the 
+variable #handle.</p>
+<p>This object is useful for displaying tabular data from an array onto the web 
+page by using the RENDER statement.</p>
+<p><b>Example:</b><font face="Courier New" size="2"><br>
+<br>
+dim ticTacToe$(2, 2)<br>
+ticTacToe$(0, 0) = &quot;X&quot;<br>
+ticTacToe$(1, 1) = &quot;X&quot;<br>
+ticTacToe$(2, 2) = &quot;X&quot;<br>
+ticTacToe$(0, 1) = &quot;O&quot;<br>
+ticTacToe$(2, 0) = &quot;O&quot;<br>
+table #gameboard, ticTacToe$()<br>
+render #gameboard</font></p>
+
+<p><b><a name="passwordboxMethods"></a>TABLE object methods</b></p>
+
+<p>#handle COLUMNNAMES(expr$) - Set the column names using a 
+comma delimited string expression<br>
+#handle CAPTION(expr$) - Set the caption using expr$<br>
+#handle CSSCLASS(expr$) - Set the CSS class tag to expr$<br>
+#handle TRCLASS(expr$) - Set the CSS class tag for table rows to expr$<br>
+#handle TDCLASS(expr$) - Set the CSS class tag for row data items to expr$<br>
+#handle THCLASS(expr$) - Set the CSS class tag for header row items to expr$<br>
+#handle CAPTIONCLASS(expr$) - Set the CSS class tag for the table caption to expr$<br>
+#handle SETID(expr$) - Set the HTML id property to be the value of expr$<br>
+#handle ALLCLASS(expr$) - Set the CSS class tag for all of the properties of the 
+table to expr$<br>
+#handle LINK(columnNameExpr$, &quot;handler&quot;) - Make the items in a column into links 
+using handler (either a sub or a branch label) when the user clicks<br>
+#handle ISNULL() - Returns zero (or false)<br>
+#handle DEBUG$() - Returns the string &quot;Table&quot;</p>
+
+
+<p>See also: <a href="tables.html">Using Tables</a> for more in-depth 
+information</p>
+
+
+
+</html>

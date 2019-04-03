@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lesson Four Homework</title>
+</head>
+
+<body>
+
+<p><b><font size="5">Lesson 4 Homework</font></b><br>
+Copyright 2007 Shoptalk Systems<br>
+All rights reserved</p>
+<p align="right"><a href="learnrunbasic.html">Return to Table of Contents</a></p>
+<p>We've covered the essential widgets that Run BASIC supports.&nbsp; Now we 
+will set you loose using some of these to create a web program.</p>
+<p><b><font size="4">Multiple Choice Test</font></b></p>
+<p>Now let's cover some addition features of Run BASIC that can help you to 
+tackle the homework project you'll be tasked with, which is a multiple choice 
+test taker.</p>
+<p><b><font size="4">READ and DATA</font></b></p>
+<p>Most implementations of BASIC have a feature for embedding information in a 
+program and reading that information called READ and DATA.&nbsp; To use this you 
+list numbers or strings in a DATA statement and use the READ statement to get 
+them one or more at a time.&nbsp; Here is a simple example:</p>
+<p><font face="Courier New" size="2">&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a$<br>
+&nbsp;&nbsp;&nbsp; print a$<br>
+&nbsp; next x<br>
+&nbsp; data &quot;one&quot;, &quot;two&quot;, &quot;three&quot;</font></p>
+<p>Note: If you try to read more items than you have then Run BASIC will stop 
+with a runtime exception.&nbsp; Try this code:</p>
+<p><font face="Courier New" size="2">&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a$<br>
+&nbsp;&nbsp;&nbsp; print a$<br>
+&nbsp; next x<br>
+&nbsp; data &quot;one&quot;, &quot;two&quot;</font></p>
+<p>You can read numeric values also, like so:</p>
+<p><font face="Courier New" size="2">&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a<br>
+&nbsp;&nbsp;&nbsp; print &quot;3 x &quot;; a; &quot; = &quot;; 3*a<br>
+&nbsp; next x<br>
+&nbsp; data 4, 9, 10.5</font></p>
+<p><font face="Times New Roman">You can have as many DATA statements as you 
+need.&nbsp; Take for example:</font></p>
+<p><font face="Courier New" size="2">&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a$<br>
+&nbsp;&nbsp;&nbsp; print a$<br>
+&nbsp; next x<br>
+&nbsp; data &quot;one&quot;<br>
+&nbsp; data &quot;two&quot;<br>
+&nbsp; data &quot;three&quot;</font></p>
+<p><font face="Times New Roman">You can read more than one item at a time with a 
+READ statement, like so:</font></p>
+<p><font face="Courier New" size="2">&nbsp; read a$, b$, c$<br>
+&nbsp; print a$<br>
+&nbsp; print b$<br>
+&nbsp; print c$<br>
+&nbsp; data &quot;one&quot;, &quot;two&quot;, &quot;three&quot;</font></p>
+<p>If you need to use the data over and over again you can use the RESTORE 
+statement.&nbsp; For example:</p>
+<p><font face="Courier New" size="2">&nbsp; for x = 1 to 3<br>
+&nbsp;&nbsp;&nbsp; read a$<br>
+&nbsp;&nbsp;&nbsp; print a$<br>
+&nbsp; next x<br>
+&nbsp; restore<br>
+&nbsp; read first$, second$, third$<br>
+&nbsp; print first$; &quot; &quot;; second$; &quot; &quot;; third$<br>
+&nbsp; data &quot;one&quot;, &quot;two&quot;, &quot;three&quot;</font></p>
+<p>Finally, it can be useful to have a way to read to the end of all your data 
+without knowing how many items are in the list.&nbsp; One way to do this is to 
+put some data at the end that is special so you can test it to see if you're at 
+the end.&nbsp; Here is an example.</p>
+<p><font face="Courier New" size="2">[loopBack]<br>
+&nbsp; read item$<br>
+&nbsp; if item$ = &quot;EndOfData&quot; then [stopLooping]<br>
+&nbsp; print item$<br>
+&nbsp; goto [loopBack]<br>
+[stopLooping]<br>
+&nbsp; data &quot;This&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot;, &quot;EndOfData&quot;</font></p>
+<p><b><font size="4">Bring on the project!</font></b></p>
+<p>Okay, now that you have a convenient way to have a set of data in your 
+programs, use this technique along with some widgets to create a program to ask 
+a series of multiple choice questions.&nbsp; At the end of the test rate the 
+performance of the test taker (ie. 7 of 9 correct).</p>
+<p>Use the PRINT statement to ask each question.&nbsp; Use the RADIOGROUP 
+statement as a way for the user to choose an answer.&nbsp; Use the LINK state to 
+accept the choice once and move onto the next question.</p>
+<p>Optionally, instead of storing the information in DATA statement use disk 
+files.</p>
+
+</body>
+
+</html>
